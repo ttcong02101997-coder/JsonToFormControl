@@ -1,7 +1,67 @@
 # 🚀 Json to Form
 
-**Json Example
+**C# parse json to Entity
+```csharp
 
+    public static Entity JsonToEntity(string json)
+    {
+        using var document = JsonDocument.Parse(json);
+
+        var entity = new Entity();
+
+        foreach (var property in document.RootElement.EnumerateObject())
+        {
+            var field = property.Value;
+
+            // Lookup
+            if (field.ValueKind == JsonValueKind.Object &&
+                field.TryGetProperty("id", out var idElement) &&
+                field.TryGetProperty("entityName", out var entityNameElement))
+            {
+                var id = Guid.Parse(idElement.GetString()!);
+                var entityName = entityNameElement.GetString()!;
+
+                entity[property.Name] = new EntityReference(entityName, id);
+                continue;
+            }
+
+            // Field có "value"
+            if (field.ValueKind == JsonValueKind.Object &&
+                field.TryGetProperty("value", out var valueElement))
+            {
+                // OptionSet
+                if (field.TryGetProperty("label", out _))
+                {
+                    entity[property.Name] =
+                        new OptionSetValue(valueElement.GetInt32());
+
+                    continue;
+                }
+
+                entity[property.Name] = GetValue(valueElement);
+            }
+        }
+
+        return entity;
+    }
+
+    private static object? GetValue(JsonElement value)
+    {
+        return value.ValueKind switch
+        {
+            JsonValueKind.String => value.GetString(),
+            JsonValueKind.Number when value.TryGetInt32(out var intValue) => intValue,
+            JsonValueKind.Number when value.TryGetInt64(out var longValue) => longValue,
+            JsonValueKind.Number when value.TryGetDecimal(out var decimalValue) => decimalValue,
+            JsonValueKind.True => true,
+            JsonValueKind.False => false,
+            JsonValueKind.Null => null,
+            _ => value.ToString()
+        };
+    }
+```
+
+**Json Example
 ```javascript
 {
   "formLogicalName": "ctt_formtest",
