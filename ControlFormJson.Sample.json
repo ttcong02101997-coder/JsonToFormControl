@@ -1,0 +1,110 @@
+{
+  "formLogicalName": "ctt_formtest",
+  "sectionBox": true,
+  "sections": [
+    {
+      "sectionLogicalName": "general",
+      "sectionLabel": "General",
+      "showLabel": true,
+      "sectionControls": {
+        "column1": [
+          {
+            "logicalName": "name",
+            "displayName": "Name",
+            "type": "text",
+            "required": true,
+            "visible": true,
+            "disabled": false
+          },
+          {
+            "logicalName": "active",
+            "displayName": "Active",
+            "type": "boolean",
+            "required": true,
+            "visible": true,
+            "disabled": false
+          },
+          {
+            "logicalName": "address",
+            "displayName": "Address",
+            "type": "multiple",
+            "required": false,
+            "visible": true,
+            "disabled": false
+          },
+          {
+            "logicalName": "total",
+            "displayName": "Total Money",
+            "type": "number",
+            "required": true,
+            "visible": true,
+            "disabled": false
+          },
+          {
+            "logicalName": "target",
+            "displayName": "Form Test",
+            "type": "lookup",
+            "lookupEntity": "ctt_formtest",
+            "lookupSubNameAttr": "createdon",
+            "required": true,
+            "visible": true,
+            "disabled": false
+          },
+          {
+            "logicalName": "detail",
+            "displayName": "Form Test Detail",
+            "type": "lookup",
+            "lookupEntity": "ctt_formtestdetail",
+            "lookupRelated": [
+              {
+                "byField": "target",
+                "targetAttribute": "ctt_parent"
+              }
+            ],
+            "required": true,
+            "visible": true,
+            "disabled": false
+          },
+          {
+            "logicalName": "status",
+            "displayName": "Status",
+            "type": "optionset",
+            "items": [
+              {
+                "label": "Option 1",
+                "value": 1
+              },
+              {
+                "label": "Option 2",
+                "value": 2
+              },
+              {
+                "label": "Option 3",
+                "value": 3
+              }
+            ],
+            "required": true,
+            "visible": true,
+            "disabled": false
+          },
+          {
+            "logicalName": "birthdate",
+            "displayName": "Birthdate",
+            "type": "date",
+            "required": true,
+            "visible": true,
+            "disabled": false
+          },
+          {
+            "logicalName": "createdon",
+            "displayName": "Created On",
+            "type": "datetime",
+            "required": true,
+            "visible": true,
+            "disabled": false
+          }
+        ]
+      }
+    }
+  ]
+}

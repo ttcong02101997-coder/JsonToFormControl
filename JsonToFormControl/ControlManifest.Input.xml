@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <control namespace="JsonToForm" constructor="JsonToFormControl" version="0.0.1"
+    display-name-key="JsonToFormControl" description-key="JsonToFormControl description"
+    control-type="virtual">
+    <external-service-usage enabled="false">
+    </external-service-usage>
+
+    <property name="fieldProperty" display-name-key="Display_Key"
+      description-key="Input_And_Output_Data" of-type="Multiple" usage="bound" required="true" />
+    <property name="fieldJson" display-name-key="Json_Key" description-key="Json_Use_Gen_Form"
+      of-type="Multiple" usage="bound"
+      required="true" />
+
+    <resources>
+      <code path="index.ts" order="1" />
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.46.2" />
+    </resources>
+
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+
+  </control>
+</manifest>
