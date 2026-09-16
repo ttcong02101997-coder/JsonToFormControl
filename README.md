@@ -2,63 +2,191 @@
 
 **Parse json to Entity used for Backend
 ```csharp
+    Entity entityJson = ParseJsonUsed(json);
 
-    public static Entity JsonToEntity(string json)
+    public static Entity ParseJsonUsed(string json)
     {
-        using var document = JsonDocument.Parse(json);
-
+        var jsonObject = JObject.Parse(json);
         var entity = new Entity();
 
-        foreach (var property in document.RootElement.EnumerateObject())
+        foreach (var property in jsonObject.Properties())
         {
-            var field = property.Value;
+            var value = ParseFieldValue(property.Value);
 
-            // Lookup
-            if (field.ValueKind == JsonValueKind.Object &&
-                field.TryGetProperty("id", out var idElement) &&
-                field.TryGetProperty("entityName", out var entityNameElement))
+            if (value != null)
             {
-                var id = Guid.Parse(idElement.GetString()!);
-                var entityName = entityNameElement.GetString()!;
-
-                entity[property.Name] = new EntityReference(entityName, id);
-                continue;
-            }
-
-            // Field có "value"
-            if (field.ValueKind == JsonValueKind.Object &&
-                field.TryGetProperty("value", out var valueElement))
-            {
-                // OptionSet
-                if (field.TryGetProperty("label", out _))
-                {
-                    entity[property.Name] =
-                        new OptionSetValue(valueElement.GetInt32());
-
-                    continue;
-                }
-
-                entity[property.Name] = GetValue(valueElement);
+                entity[property.Name] = value;
             }
         }
 
         return entity;
     }
 
-    private static object? GetValue(JsonElement value)
+    private static object ParseFieldValue(JToken token)
     {
-        return value.ValueKind switch
+        if (token.Type == JTokenType.Object)
         {
-            JsonValueKind.String => value.GetString(),
-            JsonValueKind.Number when value.TryGetInt32(out var intValue) => intValue,
-            JsonValueKind.Number when value.TryGetInt64(out var longValue) => longValue,
-            JsonValueKind.Number when value.TryGetDecimal(out var decimalValue) => decimalValue,
-            JsonValueKind.True => true,
-            JsonValueKind.False => false,
-            JsonValueKind.Null => null,
-            _ => value.ToString()
+            var jsonObject = (JObject)token;
+
+            if (IsMultiLookup(jsonObject))
+            {
+                return ParseMultiLookup(jsonObject);
+            }
+
+            if (IsLookup(jsonObject))
+            {
+                return ParseLookup(jsonObject);
+            }
+
+            if (IsValueObject(jsonObject))
+            {
+                var value = jsonObject["value"];
+
+                if (value == null || value.Type == JTokenType.Null)
+                {
+                    return null!;
+                }
+
+                if (jsonObject["label"] != null)
+                {
+                    return new OptionSetValue(value.Value<int>());
+                }
+
+                return ParsePrimitive(value);
+            }
+
+            return ParseObject(jsonObject);
+        }
+
+        if (token.Type == JTokenType.Array)
+        {
+            var result = new List<object>();
+
+            foreach (var item in token)
+            {
+                result.Add(ParseFieldValue(item));
+            }
+
+            return result;
+        }
+
+        return ParsePrimitive(token);
+    }
+
+    private static Dictionary<string, object> ParseObject(JObject jsonObject)
+    {
+        var result = new Dictionary<string, object>();
+
+        foreach (var property in jsonObject.Properties())
+        {
+            result[property.Name] = ParseFieldValue(property.Value);
+        }
+
+        return result;
+    }
+
+    private static object ParsePrimitive(JToken token)
+    {
+        switch (token.Type)
+        {
+            case JTokenType.Boolean:
+                return token.Value<bool>();
+
+            case JTokenType.Integer:
+                return token.Value<long>();
+
+            case JTokenType.Float:
+                return token.Value<decimal>();
+
+            case JTokenType.String:
+                var value = token.Value<string>();
+
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    return value!;
+                }
+
+                if (DateTime.TryParse(
+                    value,
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None,
+                    out var dateTime))
+                {
+                    return dateTime;
+                }
+
+                return value!;
+
+            case JTokenType.Date:
+                return token.Value<DateTime>();
+
+            case JTokenType.Guid:
+                return Guid.Parse(token.ToString());
+
+            case JTokenType.Null:
+                return null!;
+
+            default:
+                return token.ToObject<object>()!;
+        }
+    }
+
+    private static bool IsValueObject(JObject jsonObject)
+    {
+        return jsonObject.ContainsKey("value");
+    }
+
+    private static bool IsLookup(JObject jsonObject)
+    {
+        return jsonObject.ContainsKey("id")
+            && jsonObject.ContainsKey("entityName");
+    }
+
+    private static bool IsMultiLookup(JObject jsonObject)
+    {
+        return jsonObject["lookups"] is JArray;
+    }
+
+    private static EntityReference ParseLookup(JObject jsonObject)
+    {
+        var idValue = jsonObject["id"]?.Value<string>();
+        var name = jsonObject["name"]?.Value<string>();
+        var entityName = jsonObject["entityName"]?.Value<string>();
+
+        if (!Guid.TryParse(idValue, out var id) || string.IsNullOrWhiteSpace(entityName))
+        {
+            throw new InvalidOperationException("Invalid lookup data.");
+        }
+
+        return new EntityReference(entityName, id)
+        {
+            Name = name
         };
     }
+
+    private static List<EntityReference> ParseMultiLookup(JObject jsonObject)
+    {
+        var result = new List<EntityReference>();
+        var lookups = jsonObject["lookups"] as JArray;
+
+        if (lookups == null)
+        {
+            return result;
+        }
+
+        foreach (var lookup in lookups)
+        {
+            if (lookup is not JObject lookupObject)
+            {
+                continue;
+            }
+
+            result.Add(ParseLookup(lookupObject));
+        }
+
+        return result;
+    }
+
 ```
 
 ***Set Visible,Require,Disabled Field
