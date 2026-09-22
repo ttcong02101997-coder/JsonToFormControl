@@ -1,7 +1,8 @@
 import React from "react";
-import { Input, makeStyles, tokens } from "@fluentui/react-components";
+import ReactDOM from "react-dom";
+import { FluentProvider, Input, makeStyles, tokens, webLightTheme } from "@fluentui/react-components";
 import { buildCalendarDays, FieldComponentProps, formatDateByConfig, formatDateTimeValue, isSameDate, pad, parseDateByConfig, parseDateTimeValue } from "../ShareLibs/Models";
-import { IconLock } from "../ShareLibs/Icons";
+import { UILabelRequire, UIRequireField } from "../ShareLibs/Shared";
 
 const useStyles = makeStyles({
     root: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
 
     styleField: {
         display: "flex",
-        gap: "2px",
+        gap: "4px",
         flexDirection: "row",
 
         "@media (max-width: 425px)": {
@@ -66,7 +67,7 @@ const useStyles = makeStyles({
     },
 
     calendarPopup: {
-        position: "absolute",
+        position: "fixed",
         left: 0,
         zIndex: 2147483647,
         width: "320px",
@@ -212,7 +213,7 @@ const DateTimeComponent = ({ setFieldValue, value, isDisable, isRequired, label,
     const buttonRef = React.useRef<HTMLDivElement>(null);
     const [dateTimeValue, setDateTimeValue] = React.useState<string>("");
     const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
-    const [calendarAbove, setCalendarAbove] = React.useState(false);
+    const [calendarPosition, setCalendarPosition] = React.useState<React.CSSProperties>({});
     const [calendarDate, setCalendarDate] = React.useState<Date>(new Date());
     const [hour, setHour] = React.useState("00");
     const [minute, setMinute] = React.useState("00");
@@ -224,7 +225,12 @@ const DateTimeComponent = ({ setFieldValue, value, isDisable, isRequired, label,
         }
 
         const rect = wrapper.getBoundingClientRect();
-        setCalendarAbove(window.innerHeight - rect.bottom < 420);
+        const calendarAbove = window.innerHeight - rect.bottom < 420;
+        setCalendarPosition({
+            left: rect.left,
+            top: calendarAbove ? undefined : rect.bottom,
+            bottom: calendarAbove ? window.innerHeight - rect.top : undefined,
+        });
     };
 
     React.useEffect(() => {
@@ -412,12 +418,9 @@ const DateTimeComponent = ({ setFieldValue, value, isDisable, isRequired, label,
         return (
             <div className={styles.styleOverField} key={logicalName}>
                 <div className={styles.styleField}>
-                    <div style={{ minWidth: 180, display: "flex", gap: "2px", flexDirection: "row" }}>
-                        <label style={{ paddingBlockStart: 2, marginInlineEnd: 4, width: "100%", marginBottom: 5 }}>{label}</label>
-                        {isRequired ? <span style={{ color: "red", paddingBlockStart: 2, marginInlineEnd: 2, textShadow: "0 0 black" }}>*</span> : <span style={{ color: "white", paddingBlockStart: 2, marginInlineEnd: 2 }}>*</span>}
-                        {isDisable ? <IconLock /> : null}
-                    </div>
-
+                    {
+                        UILabelRequire(isRequired, isDisable, label)
+                    }
                     {!isDisable ? (
                         <div style={{ width: "100%", }}>
                             <div className={styles.wrapper} ref={wrapperRef}>
@@ -466,167 +469,160 @@ const DateTimeComponent = ({ setFieldValue, value, isDisable, isRequired, label,
                                         />
                                     </svg>
                                 </div>
-                                {isValid &&
-                                    !value &&
-                                    isRequired ? (
-                                    <span
-                                        style={{
-                                            color: "red",
-                                            fontSize: "12px",
-                                            textShadow: "0 0 black",
-                                        }}
-                                    >
-                                        {label}: Required fields must be filled in.
-                                    </span>
-                                ) : null}
+                                {isCalendarOpen ? ReactDOM.createPortal(
+                                    <FluentProvider theme={webLightTheme}>
+                                        <div ref={popupRef} className={styles.calendarPopup} style={calendarPosition}>
+                                            <div className={styles.calendarHeader}>
+                                                <button
+                                                    type="button"
+                                                    className={styles.navButton}
+                                                    onClick={goPreviousMonth}
+                                                >
+                                                    ‹
+                                                </button>
 
-                                {isCalendarOpen ? (
-                                    <div ref={popupRef} className={styles.calendarPopup} style={{
-                                        top: calendarAbove ? "auto" : "100%",
-                                        bottom: calendarAbove ? "100%" : "auto",
-                                    }}>
-                                        <div className={styles.calendarHeader}>
-                                            <button
-                                                type="button"
-                                                className={styles.navButton}
-                                                onClick={goPreviousMonth}
-                                            >
-                                                ‹
-                                            </button>
+                                                <span className={styles.monthTitle}>
+                                                    {
+                                                        calendarDate.toLocaleString("en-US",
+                                                            {
+                                                                month: "long",
+                                                                year: "numeric",
+                                                            }
+                                                        )
+                                                    }
+                                                </span>
 
-                                            <span className={styles.monthTitle}>
+                                                <button
+                                                    type="button"
+                                                    className={styles.navButton}
+                                                    onClick={goNextMonth}
+                                                >
+                                                    ›
+                                                </button>
+                                            </div>
+
+                                            <div className={styles.weekHeader}>
                                                 {
-                                                    calendarDate.toLocaleString("en-US",
-                                                        {
-                                                            month: "long",
-                                                            year: "numeric",
-                                                        }
-                                                    )
+                                                    [
+                                                        "Su",
+                                                        "Mo",
+                                                        "Tu",
+                                                        "We",
+                                                        "Th",
+                                                        "Fr",
+                                                        "Sa",
+                                                    ].map(day => (
+                                                        <div key={day} className={styles.weekDay}>{day}</div>
+                                                    ))
                                                 }
-                                            </span>
+                                            </div>
 
-                                            <button
-                                                type="button"
-                                                className={styles.navButton}
-                                                onClick={goNextMonth}
-                                            >
-                                                ›
-                                            </button>
-                                        </div>
+                                            <div className={styles.calendarGrid}>
+                                                {
+                                                    calendarDays.map((item, index) => {
+                                                        const isSelected = isSameDate(selectedDate, item.date);
+                                                        const isToday = isSameDate(new Date(), item.date);
 
-                                        <div className={styles.weekHeader}>
-                                            {
-                                                [
-                                                    "Su",
-                                                    "Mo",
-                                                    "Tu",
-                                                    "We",
-                                                    "Th",
-                                                    "Fr",
-                                                    "Sa",
-                                                ].map(day => (
-                                                    <div key={day} className={styles.weekDay}>{day}</div>
-                                                ))
-                                            }
-                                        </div>
-
-                                        <div className={styles.calendarGrid}>
-                                            {
-                                                calendarDays.map((item, index) => {
-                                                    const isSelected = isSameDate(selectedDate, item.date);
-                                                    const isToday = isSameDate(new Date(), item.date);
-
-                                                    return (
-                                                        <button
-                                                            key={`${item.date.getFullYear()}-${item.date.getMonth()}-${item.date.getDate()}-${index}`}
-                                                            type="button"
-                                                            className={`
+                                                        return (
+                                                            <button
+                                                                key={`${item.date.getFullYear()}-${item.date.getMonth()}-${item.date.getDate()}-${index}`}
+                                                                type="button"
+                                                                className={`
                                                         ${styles.dayButton} 
                                                         ${isSelected ? styles.selectedDay : ""} 
                                                         ${isToday ? styles.todayButton : ""}
                                                         `}
-                                                            style={{ opacity: item.currentMonth ? 1 : 0.4, }}
-                                                            onClick={() => handleDaySelect(item.date)}
+                                                                style={{ opacity: item.currentMonth ? 1 : 0.4, }}
+                                                                onClick={() => handleDaySelect(item.date)}
+                                                            >
+                                                                {item.date.getDate()}
+                                                            </button>
+                                                        );
+                                                    })
+                                                }
+                                            </div>
+
+                                            <div className={styles.timeContainer}>
+                                                <span className={styles.timeLabel}>
+                                                    Time
+                                                </span>
+
+                                                <Input
+                                                    type="number"
+                                                    min={is12HourFormat ? 1 : 0}
+                                                    max={is12HourFormat ? 12 : 23}
+                                                    value={displayHour}
+                                                    className={styles.timeInput}
+                                                    onChange={e => {
+                                                        let newHour = Number(e.target.value);
+                                                        if (Number.isNaN(newHour)) {
+                                                            return;
+                                                        }
+
+                                                        newHour = Math.min(is12HourFormat ? 12 : 23, Math.max(is12HourFormat ? 1 : 0, newHour));
+                                                        let hour24 = newHour;
+
+                                                        if (is12HourFormat) {
+                                                            const isPM = Number(hour) >= 12;
+                                                            hour24 = isPM ? newHour === 12 ? 12 : newHour + 12 : newHour === 12 ? 0 : newHour;
+                                                        }
+
+                                                        const newDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), calendarDate.getDate(), hour24, Number(minute), 0, 0);
+                                                        setHour(pad(hour24));
+                                                        updateValue(newDate);
+                                                    }}
+                                                />
+
+                                                <span>:</span>
+
+                                                <Input
+                                                    type="number"
+                                                    min={0}
+                                                    max={59}
+                                                    value={minute}
+                                                    className={styles.timeInput}
+                                                    onChange={e => {
+                                                        const newMinute = Math.min(59, Math.max(0, Number(e.target.value)));
+                                                        const newDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), calendarDate.getDate(), Number(hour), newMinute, 0, 0);
+                                                        setMinute(pad(newMinute));
+                                                        updateValue(newDate);
+                                                    }}
+                                                />
+
+                                                {
+                                                    is12HourFormat ? (
+                                                        <button
+                                                            type="button"
+                                                            className={styles.periodButton}
+                                                            onClick={togglePeriod}
                                                         >
-                                                            {item.date.getDate()}
+                                                            {period}
                                                         </button>
-                                                    );
-                                                })
-                                            }
+                                                    ) : null
+                                                }
+                                            </div>
+
+                                            <div className={styles.footer}>
+                                                <button
+                                                    type="button"
+                                                    className={styles.todayAction}
+                                                    onClick={setToday}
+                                                >
+                                                    Today
+                                                </button>
+                                            </div>
                                         </div>
-
-                                        <div className={styles.timeContainer}>
-                                            <span className={styles.timeLabel}>
-                                                Time
-                                            </span>
-
-                                            <Input
-                                                type="number"
-                                                min={is12HourFormat ? 1 : 0}
-                                                max={is12HourFormat ? 12 : 23}
-                                                value={displayHour}
-                                                className={styles.timeInput}
-                                                onChange={e => {
-                                                    let newHour = Number(e.target.value);
-                                                    if (Number.isNaN(newHour)) {
-                                                        return;
-                                                    }
-
-                                                    newHour = Math.min(is12HourFormat ? 12 : 23, Math.max(is12HourFormat ? 1 : 0, newHour));
-                                                    let hour24 = newHour;
-
-                                                    if (is12HourFormat) {
-                                                        const isPM = Number(hour) >= 12;
-                                                        hour24 = isPM ? newHour === 12 ? 12 : newHour + 12 : newHour === 12 ? 0 : newHour;
-                                                    }
-
-                                                    const newDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), calendarDate.getDate(), hour24, Number(minute), 0, 0);
-                                                    setHour(pad(hour24));
-                                                    updateValue(newDate);
-                                                }}
-                                            />
-
-                                            <span>:</span>
-
-                                            <Input
-                                                type="number"
-                                                min={0}
-                                                max={59}
-                                                value={minute}
-                                                className={styles.timeInput}
-                                                onChange={e => {
-                                                    const newMinute = Math.min(59, Math.max(0, Number(e.target.value)));
-                                                    const newDate = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), calendarDate.getDate(), Number(hour), newMinute, 0, 0);
-                                                    setMinute(pad(newMinute));
-                                                    updateValue(newDate);
-                                                }}
-                                            />
-
-                                            {
-                                                is12HourFormat ? (
-                                                    <button
-                                                        type="button"
-                                                        className={styles.periodButton}
-                                                        onClick={togglePeriod}
-                                                    >
-                                                        {period}
-                                                    </button>
-                                                ) : null
-                                            }
-                                        </div>
-
-                                        <div className={styles.footer}>
-                                            <button
-                                                type="button"
-                                                className={styles.todayAction}
-                                                onClick={setToday}
-                                            >
-                                                Today
-                                            </button>
-                                        </div>
-                                    </div>
+                                    </FluentProvider>,
+                                    document.body
                                 ) : null}
                             </div>
+
+                            {isValid &&
+                                !value &&
+                                isRequired ? (
+                                UIRequireField(label)
+                            ) : null}
+
                         </div>
                     ) : (
                         <Input

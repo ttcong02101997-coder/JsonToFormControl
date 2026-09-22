@@ -9,7 +9,7 @@ import { findElementUp, setFieldDisabled, setFieldRequired, setFieldVisibility }
 export interface FormComponentProps {
     context: ComponentFramework.Context<IInputs>;
     fieldProperty: string;
-    jsonProperty: string;
+    jsonProperty: string | null;
     callback: (e: string) => void;
 }
 
@@ -30,6 +30,14 @@ const useStyles = makeStyles({
             gridTemplateColumns: "1fr !important",
         },
     },
+    singleColumnStyle: {
+        flexWrap: "wrap",
+        display: "grid",
+        gap: "16px",
+        width: "100%",
+        boxSizing: "border-box",
+        gridTemplateColumns: "1fr !important",
+    },
     columnStyle: {
         padding: 0,
         boxShadow: "none",
@@ -40,7 +48,8 @@ const useStyles = makeStyles({
     sectionCard: {
         padding: 0,
         margin: 0,
-        boxShadow: "none"
+        boxShadow: "none",
+        marginLeft: "2px"
     }
 })
 
@@ -48,7 +57,7 @@ function FormComponent({ context, fieldProperty, jsonProperty, callback }: FormC
     const styles = useStyles();
     const [dataJson, setDataJson] = useState<jsonFormControl | null>(null);
     const [fieldValue, setFieldValue] = useState<Record<string, fieldValueProps>>({});
-    const [isValid, setIsValid] = useState<boolean>(true);
+    const [isValid, setIsValid] = useState<boolean>(false);
     const isDisabled = context.mode.isControlDisabled;
     const [dateFormat, setDateFormat] = useState<string>("");
     const [dateTimeFormat, setDateTimeFormat] = useState<string>("");
@@ -57,8 +66,7 @@ function FormComponent({ context, fieldProperty, jsonProperty, callback }: FormC
     const isInitialFieldValue = useRef(true);
 
     useEffect(() => {
-        const dateFormattingInfo =
-            context.userSettings.dateFormattingInfo;
+        const dateFormattingInfo = context.userSettings.dateFormattingInfo;
         const userDateFormat = dateFormattingInfo.shortDatePattern;
         const userTimeFormat = dateFormattingInfo.shortTimePattern;
 
@@ -150,6 +158,10 @@ function FormComponent({ context, fieldProperty, jsonProperty, callback }: FormC
                 return Boolean(currentValue.id);
             }
 
+            if (field.type === "multiplelookup") {
+                return (currentValue.lookups?.length ?? 0) > 0;
+            }
+
             if (field.type === "boolean") {
                 return typeof currentValue.value === "boolean";
             }
@@ -224,15 +236,20 @@ function FormComponent({ context, fieldProperty, jsonProperty, callback }: FormC
     }, [fieldProperty]);
 
     useEffect(() => {
-        if (fieldProperty && fieldProperty !== 'val') {
-            try {
-                const parsed = JSON.parse(jsonProperty) as jsonFormControl;
+        if (!jsonProperty || jsonProperty === "val") {
+            setDataJson(null);
+            setLogicalNameForm("");
+            return;
+        }
 
-                setDataJson(parsed);
-                setLogicalNameForm(parsed.formLogicalName);
-            } catch {
-                setDataJson(null);
-            }
+        try {
+            const parsed = JSON.parse(jsonProperty) as jsonFormControl;
+
+            setDataJson(parsed);
+            setLogicalNameForm(parsed.formLogicalName);
+        } catch {
+            setDataJson(null);
+            setLogicalNameForm("");
         }
     }, [jsonProperty]);
 
@@ -243,15 +260,12 @@ function FormComponent({ context, fieldProperty, jsonProperty, callback }: FormC
                     <div id={dataJson.formLogicalName}>
                         {dataJson.sections.map((section: jsonFormSection) => {
                             const columns = Object.keys(section.sectionControls);
-                            const columnCount = Math.min(columns.length, 3);
                             return (
-                                <Card key={`${section.sectionLogicalName}`} className={dataJson.sectionBox ? styles.sectionCard : ""}>
+                                <Card key={`${section.sectionLogicalName}`} className={!dataJson.sectionBox ? styles.sectionCard : ""} style={{ margin: 0 }}>
                                     {
                                         section.showLabel ? <div style={{ fontWeight: 600, textTransform: "uppercase" }}>{section.sectionLabel}</div> : null
                                     }
-                                    <div className={styles.overColumnStyle} style={{
-                                        gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
-                                    }}>
+                                    <div className={`${columns.length === 1 ? styles.singleColumnStyle : styles.overColumnStyle}`}>
                                         {
                                             Object.keys(section.sectionControls).map((column: string) => (
                                                 <Card className={styles.columnStyle} key={`${section.sectionLogicalName}-${column}`}>

@@ -6,6 +6,7 @@ import DateComponent from '../components/DateComponent';
 import DateTimeComponent from '../components/DateTimeComponent';
 import BooleanComponent from '../components/BooleanComponent';
 import LookupComponent from '../components/LookupComponent';
+import MultipleLookupComponent from '../components/MultipleLookupComponent';
 import { IInputs } from '../generated/ManifestTypes';
 import OptionsetComponent from '../components/OptionsetComponent';
 import { fieldValueProps, jsonControl } from '../ShareLibs/Models';
@@ -35,6 +36,7 @@ function RenderFieldComponent({ fieldValue, setFieldValue, context, isDisable, o
                 fieldValue={fieldValue}
                 isValid={isValid}
                 isVisible={objControl.visible}
+                decimalPlaces={objControl.decimalPlaces ?? 0}
             />
         );
     }
@@ -113,6 +115,26 @@ function RenderFieldComponent({ fieldValue, setFieldValue, context, isDisable, o
                     name: fieldValue[objControl.logicalName]?.name,
                     entityName: fieldValue[objControl.logicalName]?.entityName
                 }}
+                setFieldValue={setFieldValue}
+                entityName={objControl.lookupEntity ?? ""}
+                isRequired={objControl.required}
+                isDisable={isDisable == true ? isDisable : objControl.disabled}
+                label={objControl.displayName ?? ""}
+                logicalName={objControl.logicalName}
+                fieldValue={fieldValue}
+                context={context}
+                lookupRelated={objControl.lookupRelated}
+                lookupSubNameAttr={objControl.lookupSubNameAttr}
+                isValid={isValid}
+                isVisible={objControl.visible}
+            />
+        );
+    }
+    else if (objControl.type == "multiplelookup") {
+        return (
+            <MultipleLookupComponent
+                key={objControl.logicalName}
+                value={fieldValue[objControl.logicalName]}
                 setFieldValue={setFieldValue}
                 entityName={objControl.lookupEntity ?? ""}
                 isRequired={objControl.required}

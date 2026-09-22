@@ -5,7 +5,7 @@ import FormComponent, { FormComponentProps } from "./Pages/FormComponent";
 export class JsonToFormControl implements ComponentFramework.ReactControl<IInputs, IOutputs> {
     private notifyOutputChanged: () => void;
     private _fieldProperty = "";
-    private _jsonProperty = "";
+    private _jsonProperty: string | null = null;
     private _pendingFieldProperty: string | null = null;
 
     constructor() {
@@ -21,12 +21,12 @@ export class JsonToFormControl implements ComponentFramework.ReactControl<IInput
     }
 
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
+        this._jsonProperty = context.parameters.fieldJson.raw ?? null;
         const incomingFieldProperty = context.parameters.fieldProperty.raw ?? "";
         if (this._pendingFieldProperty === null || incomingFieldProperty === this._pendingFieldProperty) {
             this._fieldProperty = incomingFieldProperty;
             this._pendingFieldProperty = null;
         }
-        this._jsonProperty = context.parameters.fieldJson.raw ?? "";
 
         const FormComponentProps: FormComponentProps = {
             context,
@@ -47,7 +47,7 @@ export class JsonToFormControl implements ComponentFramework.ReactControl<IInput
     public getOutputs(): IOutputs {
         return {
             fieldProperty: this._fieldProperty,
-            fieldJson: this._jsonProperty
+            fieldJson: this._jsonProperty ?? ""
         };
     }
 

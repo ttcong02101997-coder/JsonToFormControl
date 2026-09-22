@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="JsonToForm" constructor="JsonToFormControl" version="0.0.1"
+  <control namespace="JsonToForm" constructor="JsonToFormControl" version="1.0.0"
     display-name-key="JsonToFormControl" description-key="JsonToFormControl description"
     control-type="virtual">
     <external-service-usage enabled="false">

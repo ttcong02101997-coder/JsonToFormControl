@@ -53,15 +53,17 @@ export const SearchIcon = (
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <path
-            d="M6.75 2.25C4.26472 2.25 2.25 4.26472 2.25 6.75C2.25 9.23528 4.26472 11.25 6.75 11.25C9.23528 11.25 11.25 9.23528 11.25 6.75C11.25 4.26472 9.23528 2.25 6.75 2.25Z"
+        <circle
+            cx="9"
+            cy="5"
+            r="4.5"
             stroke="currentColor"
-            strokeWidth="1.2"
+            strokeWidth="1"
         />
         <path
-            d="M10.25 10.25L13.5 13.5"
+            d="M6.2 7.8L1.5 14.5"
             stroke="currentColor"
-            strokeWidth="1.2"
+            strokeWidth="1"
             strokeLinecap="round"
         />
     </svg>

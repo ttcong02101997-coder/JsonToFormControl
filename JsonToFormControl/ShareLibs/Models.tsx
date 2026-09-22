@@ -35,6 +35,7 @@ export interface jsonControl {
     required: boolean;
     visible: boolean;
     disabled: boolean;
+    decimalPlaces: number;
 }
 
 export interface jsonOptionsetControl {
@@ -67,6 +68,7 @@ export interface FieldComponentProps {
     dateFormat?: string;
     dateTimeFormat?: string;
     isVisible: boolean;
+    decimalPlaces?: number;
 }
 
 export interface fieldValueProps {
@@ -75,6 +77,7 @@ export interface fieldValueProps {
     name?: string;
     entityName?: string;
     label?: string;
+    lookups?: jsonLookupControl[];
 }
 
 export type InputType =

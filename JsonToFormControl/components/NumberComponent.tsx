@@ -1,8 +1,7 @@
 import { Input, makeStyles } from "@fluentui/react-components";
 import React from "react";
 import { FieldComponentProps } from "../ShareLibs/Models";
-import { IconLock } from "../ShareLibs/Icons";
-import { formatNumber } from "../ShareLibs/Shared";
+import { formatNumber, UILabelRequire, UIRequireField } from "../ShareLibs/Shared";
 
 const useStyles = makeStyles({
     styleInput: {
@@ -25,7 +24,7 @@ const useStyles = makeStyles({
     },
     styleField: {
         display: "flex",
-        gap: "2px",
+        gap: "4px",
         flexDirection: "row",
 
         "@media (max-width: 425px)": {
@@ -34,9 +33,7 @@ const useStyles = makeStyles({
     }
 });
 
-const DECIMAL_PLACES = 2;
-
-function NumberComponent({ setFieldValue, value, isDisable, isRequired, label, fieldValue, logicalName, isValid, isVisible }: FieldComponentProps) {
+function NumberComponent({ setFieldValue, value, isDisable, isRequired, label, fieldValue, logicalName, isValid, isVisible, decimalPlaces }: FieldComponentProps) {
     const styles = useStyles();
     const valueAsString = (input: FieldComponentProps["value"]): string => {
         if (input !== null && typeof input === "object") {
@@ -103,7 +100,7 @@ function NumberComponent({ setFieldValue, value, isDisable, isRequired, label, f
             const decimalPart = newValue
                 .substring(dotIndex + 1)
                 .replace(/\./g, "")
-                .substring(0, DECIMAL_PLACES);
+                .substring(0, decimalPlaces);
 
             newValue = `${integerPart}.${decimalPart}`;
         }
@@ -132,21 +129,18 @@ function NumberComponent({ setFieldValue, value, isDisable, isRequired, label, f
             return;
         }
 
-        setData(formatNumber(numericValue, DECIMAL_PLACES));
+        setData(formatNumber(numericValue, decimalPlaces));
     };
 
-    const inputValue = isFocused ? data : data ? formatNumber(data, DECIMAL_PLACES) : "";
+    const inputValue = isFocused ? data : data ? formatNumber(data, decimalPlaces) : "";
 
     if (isVisible)
         return (
             <div className={styles.styleOverField}>
                 <div className={styles.styleField}>
-                    <div style={{ minWidth: 180, display: "flex", gap: "2px", flexDirection: "row" }}>
-                        <label style={{ paddingBlockStart: 2, marginInlineEnd: 4, width: "100%", marginBottom: 5 }}>{label}</label>
-                        {isRequired ? <span style={{ color: "red", paddingBlockStart: 2, marginInlineEnd: 2, textShadow: "0 0 black" }}>*</span> : <span style={{ color: "white", paddingBlockStart: 2, marginInlineEnd: 2 }}>*</span>}
-                        {isDisable ? <IconLock /> : null}
-                    </div>
-
+                    {
+                        UILabelRequire(isRequired, isDisable, label)
+                    }
                     <div style={{ width: "100%" }}>
                         <Input
                             type="text"
@@ -162,9 +156,7 @@ function NumberComponent({ setFieldValue, value, isDisable, isRequired, label, f
                         {isValid &&
                             !value &&
                             isRequired ? (
-                            <span style={{ color: "red", fontSize: "12px", textShadow: "0 0 black" }}>
-                                {label}: Required fields must be filled in.
-                            </span>
+                            UIRequireField(label)
                         ) : null}
                     </div>
                 </div>

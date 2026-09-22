@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Input, InteractionTag, InteractionTagPrimary, InteractionTagSecondary, makeStyles, Option, TagGroup, Button, Card, CardFooter, Spinner } from '@fluentui/react-components';
+import React, { useEffect, useRef } from 'react'
+import ReactDOM from 'react-dom';
+import { FluentProvider, Input, InteractionTag, InteractionTagPrimary, InteractionTagSecondary, makeStyles, Option, TagGroup, Button, Card, CardFooter, Spinner, webLightTheme } from '@fluentui/react-components';
 import { FieldComponentProps, jsonLookupControl } from '../ShareLibs/Models';
-import { getLookupRecords } from '../ShareLibs/Shared';
-import { IconLock, SearchIcon, NewIcon } from '../ShareLibs/Icons';
+import { getLookupEntityDisplayName, getLookupRecords, UILabelRequire, UIRequireField } from '../ShareLibs/Shared';
+import { SearchIcon, NewIcon } from '../ShareLibs/Icons';
 
 const useStyles = makeStyles({
     customBtn: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
         },
         color: "rgb(17, 94, 163)",
         fontSize: "14px",
-        height: "90%"
+        height: "90%",
     },
     styleInput: {
         background: "rgba(0, 0, 0, 0.06)",
@@ -52,7 +53,7 @@ const useStyles = makeStyles({
     },
     styleField: {
         display: "flex",
-        gap: "2px",
+        gap: "4px",
         flexDirection: "row",
 
         "@media (max-width: 425px)": {
@@ -67,15 +68,28 @@ const useStyles = makeStyles({
         position: "relative"
     },
     cardStyles: {
-        position: "absolute",
+        position: "fixed",
         zIndex: 999999,
-        left: 0,
-        width: "100%",
+        width: "auto",
         padding: "5px",
         minHeight: "unset",
         maxHeight: "350px",
         overflow: "auto",
         height: "fit-content",
+        ["--fui-Card--size" as string]: "7px"
+    },
+    popupHeader: {
+        position: "sticky",
+        top: 0,
+        zIndex: 1,
+        padding: "8px 12px",
+        margin: "-5px -5px 5px",
+        backgroundColor: "white",
+        borderBottom: "1px solid #ccc",
+        color: "#323130",
+        fontSize: "14px",
+        fontWeight: 600,
+        marginBottom: 0
     },
     optionStyle: {
         "& .fui-Option__checkIcon": {
@@ -84,6 +98,11 @@ const useStyles = makeStyles({
 
         paddingLeft: "12px",
         paddingRight: "12px",
+        margin: "3px 0",
+        borderRadius: "4px",
+        backgroundColor: "white",
+        boxShadow: "0 4px 8px -6px rgba(0, 0, 0, 0.55)",
+        overflow: "hidden",
     },
 
     readonlyField: {
@@ -104,6 +123,11 @@ const useStyles = makeStyles({
     styleButton: {
         border: "none",
         fontWeight: 400
+    },
+    tagPrimaryText: {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap'
     }
 });
 
@@ -114,11 +138,21 @@ function LookupComponent({ setFieldValue, value, entityName, context, isDisable,
     const [options, setOptions] = React.useState<jsonLookupControl[]>([]);
     const [openCard, setOpenCard] = React.useState<boolean>(false);
     const [loading, setLoading] = React.useState<boolean>(false);
-    const [up, setUp] = React.useState<boolean>(false);
+    const [popupPosition, setPopupPosition] = React.useState<React.CSSProperties>({});
     const [keyword, setKeyword] = React.useState<string>("");
+    const [entityDisplayName, setEntityDisplayName] = React.useState<string>(entityName ?? "");
     const lookupValue = value && typeof value === "object" ? value as jsonLookupControl : undefined;
     const popupRef = useRef<HTMLDivElement>(null);
     const containerRef = React.useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!context || !entityName) {
+            setEntityDisplayName(entityName ?? "");
+            return;
+        }
+
+        void getLookupEntityDisplayName(context, entityName).then(setEntityDisplayName);
+    }, [context, entityName]);
 
     const updatePopupPosition = () => {
         const container = containerRef.current;
@@ -127,11 +161,14 @@ function LookupComponent({ setFieldValue, value, entityName, context, isDisable,
         }
 
         const rect = container.getBoundingClientRect();
-        const spaceBelow = window.innerHeight - rect.bottom;
         const popupHeight = 350;
-        const shouldOpenAbove = spaceBelow < popupHeight;
-
-        setUp(shouldOpenAbove);
+        const shouldOpenAbove = window.innerHeight - rect.bottom < popupHeight;
+        setPopupPosition({
+            left: rect.left,
+            right: window.innerWidth - rect.right,
+            top: shouldOpenAbove ? undefined : rect.bottom,
+            bottom: shouldOpenAbove ? window.innerHeight - rect.top : undefined,
+        });
     };
 
 
@@ -275,6 +312,7 @@ function LookupComponent({ setFieldValue, value, entityName, context, isDisable,
 
     const clickNewRecordLookup = () => {
         setLoading(true);
+        setOpenCard(false);
 
         void window.Xrm.Navigation.navigateTo(
             {
@@ -314,11 +352,9 @@ function LookupComponent({ setFieldValue, value, entityName, context, isDisable,
                 )}
                 <div className={styles.styleOverField} key={logicalName}>
                     <div className={styles.styleField}>
-                        <div style={{ minWidth: 180, display: "flex", gap: "2px", flexDirection: "row" }}>
-                            <label style={{ paddingBlockStart: 2, marginInlineEnd: 4, width: "100%", marginBottom: 5 }}>{label}</label>
-                            {isRequired ? <span style={{ color: "red", paddingBlockStart: 2, marginInlineEnd: 2, textShadow: "0 0 black" }}>*</span> : <span style={{ color: "white", paddingBlockStart: 2, marginInlineEnd: 2 }}>*</span>}
-                            {isDisable ? <IconLock /> : null}
-                        </div>
+                        {
+                            UILabelRequire(isRequired, isDisable, label)
+                        }
 
                         {
                             !isDisable ?
@@ -335,9 +371,18 @@ function LookupComponent({ setFieldValue, value, entityName, context, isDisable,
                                                                     hasSecondaryAction
                                                                     className={styles.customBtn}
                                                                     onClick={() => void viewLookup()}
+                                                                    primaryText={{
+                                                                        style: {
+                                                                            overflow: "hidden",
+                                                                            textOverflow: "ellipsis",
+                                                                            whiteSpace: "nowrap",
+                                                                            minWidth: 0
+                                                                        }
+                                                                    }}
                                                                 >
-                                                                    <span style={{ textDecoration: "underline" }}>{valueLookup.name}</span>
+                                                                    {valueLookup.name}
                                                                 </InteractionTagPrimary>
+
                                                                 <InteractionTagSecondary
                                                                     onClick={() => {
                                                                         updateLookupValue(undefined);
@@ -360,7 +405,7 @@ function LookupComponent({ setFieldValue, value, entityName, context, isDisable,
                                                     <Input
                                                         className={`${styles.styleInput1}`}
                                                         disabled={isDisable}
-                                                        placeholder={`Look up ${entityName}`}
+                                                        placeholder={`Look up ${entityDisplayName}`}
                                                         onClick={() => void openLookupDialog()}
                                                         onChange={(_, data) => setKeyword(data.value)}
                                                         onKeyDown={(e) => {
@@ -381,68 +426,74 @@ function LookupComponent({ setFieldValue, value, entityName, context, isDisable,
                                                 </div>
                                         }
                                         {
-                                            openCard ?
-                                                <Card className={styles.cardStyles} ref={popupRef} style={{
-                                                    top: up ? "auto" : "100%",
-                                                    bottom: up ? "100%" : "auto",
-                                                }}>
-                                                    <div style={{ marginBottom: 45, maxHeight: "350px", overflow: "auto", height: "fit-content", }}>
-                                                        {
-                                                            loading ?
-                                                                <Option
-                                                                    className={styles.optionStyle}
-                                                                    onClick={(e: React.MouseEvent<HTMLElement>) => { clickChooseLookup(e) }}
-                                                                >
-                                                                    Loading...
-                                                                </Option>
-                                                                :
-                                                                options.map((item: jsonLookupControl, index: number) => (
-                                                                    <div key={`${logicalName}-${item.id}`} style={{ borderBottom: `${index == options.length - 1 ? "none" : "1px solid #d7d7d7"}` }}>
-                                                                        <Option
-                                                                            className={styles.optionStyle}
-                                                                            onClick={(e: React.MouseEvent<HTMLElement>) => { clickChooseLookup(e) }}
-                                                                            data-id={item.id}
-                                                                            data-name={item.name}
-                                                                            data-entityname={item.entityName}
-                                                                            text={item.name}
-                                                                        >
-                                                                            <div>
-                                                                                <div>{item.name}</div>
-                                                                                <span style={{ fontSize: 11 }}>{item.subName ?? ""}</span>
-                                                                            </div>
+                                            openCard ? ReactDOM.createPortal(
+                                                <FluentProvider theme={webLightTheme}>
+                                                    <Card className={styles.cardStyles} ref={popupRef} style={popupPosition}>
+                                                        <div className={styles.popupHeader}>{entityDisplayName}</div>
+                                                        <div style={{ marginBottom: 45, maxHeight: "350px", overflow: "auto", height: "fit-content", }}>
+                                                            {
+                                                                loading ?
+                                                                    <Option
+                                                                        className={styles.optionStyle}
+                                                                        onClick={(e: React.MouseEvent<HTMLElement>) => { clickChooseLookup(e) }}
+                                                                        text="Loading..."
+                                                                    >
+                                                                        Loading...
+                                                                    </Option>
+                                                                    : options.length === 0 ?
+                                                                        <Option className={styles.optionStyle} text="No records found">
+                                                                            No records found
                                                                         </Option>
-                                                                    </div>
-                                                                ))
-                                                        }
-                                                    </div>
-                                                    <div style={{
-                                                        position: "absolute",
-                                                        bottom: 0,
-                                                        background: "white",
-                                                        padding: "5px 0",
-                                                        borderTop: "1px solid #ccc",
-                                                        right: 0,
-                                                        left: 0
-                                                    }}>
-                                                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
-                                                            <Button
-                                                                appearance="transparent"
-                                                                icon={NewIcon}
-                                                                onClick={() => void clickNewRecordLookup()}
-                                                            >New</Button>
-                                                            <Button
-                                                                appearance="transparent"
-                                                                icon={SearchIcon}
-                                                                onClick={() => void openLookupDialogAdvance()}
-                                                            >Advanced</Button>
+                                                                        :
+                                                                        options.map((item: jsonLookupControl, index: number) => (
+                                                                            <Option
+                                                                                key={`${logicalName}-${item.id}`}
+                                                                                className={styles.optionStyle}
+                                                                                onClick={(e: React.MouseEvent<HTMLElement>) => { clickChooseLookup(e) }}
+                                                                                data-id={item.id}
+                                                                                data-name={item.name}
+                                                                                data-entityname={item.entityName}
+                                                                                text={item.name}
+                                                                            >
+                                                                                <div>
+                                                                                    <div>{item.name}</div>
+                                                                                    <span style={{ fontSize: 11 }}>{item.subName ?? ""}</span>
+                                                                                </div>
+                                                                            </Option>
+                                                                        ))
+                                                            }
                                                         </div>
-                                                    </div>
-                                                </Card> : null
+                                                        <div style={{
+                                                            position: "absolute",
+                                                            bottom: 0,
+                                                            background: "white",
+                                                            padding: "5px 0",
+                                                            borderTop: "1px solid #ccc",
+                                                            right: 0,
+                                                            left: 0
+                                                        }}>
+                                                            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
+                                                                <Button
+                                                                    appearance="transparent"
+                                                                    icon={NewIcon}
+                                                                    onClick={() => void clickNewRecordLookup()}
+                                                                >New</Button>
+                                                                <Button
+                                                                    appearance="transparent"
+                                                                    icon={SearchIcon}
+                                                                    onClick={() => void openLookupDialogAdvance()}
+                                                                >Advanced</Button>
+                                                            </div>
+                                                        </div>
+                                                    </Card>
+                                                </FluentProvider>,
+                                                document.body
+                                            ) : null
                                         }
                                     </div>
 
                                     {
-                                        isValid && !valueLookup?.id && isRequired ? <span style={{ color: "red", fontSize: "12px", textShadow: "0 0 black" }}>{label}: Required fields must be filled in.</span> : null
+                                        isValid && !valueLookup?.id && isRequired ? UIRequireField(label) : null
                                     }
                                 </div>
                                 :

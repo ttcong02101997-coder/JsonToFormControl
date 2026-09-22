@@ -1,11 +1,11 @@
 {
   "formLogicalName": "ctt_formtest",
-  "sectionBox": true,
+  "sectionBox": false,
   "sections": [
     {
       "sectionLogicalName": "general",
       "sectionLabel": "General",
-      "showLabel": true,
+      "showLabel": false,
       "sectionControls": {
         "column1": [
           {
@@ -13,6 +13,16 @@
             "displayName": "Name",
             "type": "text",
             "required": true,
+            "visible": true,
+            "disabled": false
+          },
+          {
+            "logicalName": "customers",
+            "displayName": "Customers",
+            "type": "multiplelookup",
+            "lookupEntity": "account",
+            "lookupSubNameAttr": "accountnumber",
+            "required": false,
             "visible": true,
             "disabled": false
           },
@@ -36,6 +46,7 @@
             "logicalName": "total",
             "displayName": "Total Money",
             "type": "number",
+            "decimalPlaces": 2,
             "required": true,
             "visible": true,
             "disabled": false

@@ -1,7 +1,7 @@
 import { Input, makeStyles } from '@fluentui/react-components'
 import React from 'react'
 import { FieldComponentProps } from '../ShareLibs/Models';
-import { IconLock } from '../ShareLibs/Icons';
+import { UILabelRequire, UIRequireField } from '../ShareLibs/Shared';
 
 const useStyles = makeStyles({
     styleInput: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     },
     styleField: {
         display: "flex",
-        gap: "2px",
+        gap: "4px",
         flexDirection: "row",
 
         "@media (max-width: 425px)": {
@@ -38,11 +38,9 @@ function TextComponent({ setFieldValue, value, label, isDisable, isRequired, log
         return (
             <div className={styles.styleOverField} key={logicalName}>
                 <div className={styles.styleField}>
-                    <div style={{ minWidth: 180, display: "flex", gap: "2px", flexDirection: "row" }}>
-                        <label style={{ paddingBlockStart: 2, marginInlineEnd: 4, width: "100%", marginBottom: 5 }}>{label}</label>
-                        {isRequired ? <span style={{ color: "red", paddingBlockStart: 2, marginInlineEnd: 2, textShadow: "0 0 black" }}>*</span> : <span style={{ color: "white", paddingBlockStart: 2, marginInlineEnd: 2 }}>*</span>}
-                        {isDisable ? <IconLock /> : null}
-                    </div>
+                    {
+                        UILabelRequire(isRequired, isDisable, label)
+                    }
                     {
                         !isDisable ?
                             <div style={{ width: "100%" }}>
@@ -61,7 +59,7 @@ function TextComponent({ setFieldValue, value, label, isDisable, isRequired, log
                                     });
                                 }} className={styles.styleInput} placeholder={`---`} />
                                 {
-                                    isValid && !value && isRequired ? <span style={{ color: "red", fontSize: "12px", textShadow: "0 0 black" }}>{label}: Required fields must be filled in.</span> : null
+                                    isValid && !value && isRequired ? UIRequireField(label) : null
                                 }
                             </div>
                             :

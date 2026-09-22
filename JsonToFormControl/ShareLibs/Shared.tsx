@@ -1,3 +1,4 @@
+import React from "react";
 import { IInputs } from "../generated/ManifestTypes";
 import {
     CalendarDay,
@@ -8,6 +9,7 @@ import {
     jsonLookupControl,
     jsonRelatedLookup,
 } from "./Models";
+import { IconLock } from "./Icons";
 
 type DynamicRecord = Record<string, unknown>;
 
@@ -22,6 +24,39 @@ const getStringProperty = (
 
 const normalizeGuid = (value: string): string => {
     return value.replace(/[{}]/g, "").trim();
+};
+
+export const getLookupEntityDisplayName = async (
+    context: ComponentFramework.Context<IInputs>,
+    entityName: string
+): Promise<string> => {
+    const metadataResult: unknown = await context.utils.getEntityMetadata(entityName);
+
+    if (typeof metadataResult !== "object" || metadataResult === null) {
+        return entityName;
+    }
+
+    const metadata = metadataResult as DynamicRecord;
+    const displayName = metadata.DisplayName;
+
+    if (typeof displayName === "string" && displayName.trim()) {
+        return displayName;
+    }
+
+    if (typeof displayName === "object" && displayName !== null) {
+        const displayNameRecord = displayName as DynamicRecord;
+        const userLocalizedLabel = displayNameRecord.UserLocalizedLabel;
+
+        if (typeof userLocalizedLabel === "object" && userLocalizedLabel !== null) {
+            const label = (userLocalizedLabel as DynamicRecord).Label;
+
+            if (typeof label === "string" && label.trim()) {
+                return label;
+            }
+        }
+    }
+
+    return entityName;
 };
 
 export const getLookupRecords = async (context: ComponentFramework.Context<IInputs>, entityName: string, lookupRelated: jsonRelatedLookup[], lookupSubNameAttr: string, fieldValue: Record<string, fieldValueProps>, keyword?: string): Promise<jsonLookupControl[]> => {
@@ -420,4 +455,21 @@ export function setFieldDisabled(formJson: jsonFormControl, logicalName: string,
     );
 
     return JSON.stringify(formJson);
+}
+
+export const UILabelRequire = (isRequired: boolean, isDisable: boolean, label: string) => {
+    return (
+        <div style={{ minWidth: 180, display: "flex", gap: "2px", flexDirection: "row", justifyContent: "space-between" }}>
+            <label style={{ paddingBlockStart: 2, marginInlineEnd: 4, width: "100%", marginBottom: 5, maxWidth: 150 }}>{label}</label>
+            {isRequired ? <span style={{ color: "rgb(188, 47, 50)", paddingBlockStart: 2, marginInlineEnd: 2 }}>*</span> : <span style={{ color: "white", paddingBlockStart: 2, marginInlineEnd: 2 }}>*</span>}
+            {isDisable ? <IconLock /> : null}
+        </div>
+
+    )
+}
+
+export const UIRequireField = (label: string) => {
+    return (
+        <span style={{ color: "rgb(188, 47, 50)", fontSize: "12px" }}>{label}: Required fields must be filled in.</span>
+    )
 }

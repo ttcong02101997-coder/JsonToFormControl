@@ -1,0 +1,780 @@
+2026-09-12 13:03:22.555 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFromControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControl.zip
+
+2026-09-12 13:03:22.574 - Info	Processing Component: Entities
+2026-09-12 13:03:22.580 - Info	Processing Component: Roles
+2026-09-12 13:03:22.588 - Info	Processing Component: Workflows
+2026-09-12 13:03:22.588 - Info	Processing Component: FieldSecurityProfiles
+2026-09-12 13:03:22.589 - Info	Processing Component: Templates
+2026-09-12 13:03:22.590 - Info	Processing Component: EntityMaps
+2026-09-12 13:03:22.590 - Info	Processing Component: EntityRelationships
+2026-09-12 13:03:22.623 - Info	Processing Component: OrganizationSettings
+2026-09-12 13:03:22.623 - Info	Processing Component: optionsets
+2026-09-12 13:03:22.624 - Info	Processing Component: CustomControls
+2026-09-12 13:03:22.634 - Info	 - JsonToForm.JsonToFormControl
+2026-09-12 13:03:22.696 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-12 13:03:22.697 - Info	Processing Component: EntityDataProviders
+2026-09-12 13:03:22.702 - Info	Processing Sharded Component Files
+2026-09-12 13:03:22.758 - Info	
+Managed Pack complete.
+
+2026-09-13 13:27:16.908 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFromControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControl.zip
+
+2026-09-13 13:27:16.942 - Info	Processing Component: Entities
+2026-09-13 13:27:16.944 - Info	Processing Component: Roles
+2026-09-13 13:27:16.947 - Info	Processing Component: Workflows
+2026-09-13 13:27:16.948 - Info	Processing Component: FieldSecurityProfiles
+2026-09-13 13:27:16.948 - Info	Processing Component: Templates
+2026-09-13 13:27:16.950 - Info	Processing Component: EntityMaps
+2026-09-13 13:27:16.950 - Info	Processing Component: EntityRelationships
+2026-09-13 13:27:16.977 - Info	Processing Component: OrganizationSettings
+2026-09-13 13:27:16.977 - Info	Processing Component: optionsets
+2026-09-13 13:27:16.978 - Info	Processing Component: CustomControls
+2026-09-13 13:27:16.985 - Info	 - JsonToForm.JsonToFormControl
+2026-09-13 13:27:17.047 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-13 13:27:17.048 - Info	Processing Component: EntityDataProviders
+2026-09-13 13:27:17.050 - Info	Processing Sharded Component Files
+2026-09-13 13:27:17.071 - Info	
+Managed Pack complete.
+
+2026-09-14 16:42:37.592 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFromControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControl.zip
+
+2026-09-14 16:42:37.606 - Info	Processing Component: Entities
+2026-09-14 16:42:37.608 - Info	Processing Component: Roles
+2026-09-14 16:42:37.612 - Info	Processing Component: Workflows
+2026-09-14 16:42:37.612 - Info	Processing Component: FieldSecurityProfiles
+2026-09-14 16:42:37.613 - Info	Processing Component: Templates
+2026-09-14 16:42:37.613 - Info	Processing Component: EntityMaps
+2026-09-14 16:42:37.614 - Info	Processing Component: EntityRelationships
+2026-09-14 16:42:37.618 - Info	Processing Component: OrganizationSettings
+2026-09-14 16:42:37.618 - Info	Processing Component: optionsets
+2026-09-14 16:42:37.618 - Info	Processing Component: CustomControls
+2026-09-14 16:42:37.628 - Info	 - JsonToForm.JsonToFormControl
+2026-09-14 16:42:37.698 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-14 16:42:37.699 - Info	Processing Component: EntityDataProviders
+2026-09-14 16:42:37.703 - Info	Processing Sharded Component Files
+2026-09-14 16:42:37.741 - Info	
+Managed Pack complete.
+
+2026-09-15 11:24:16.591 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-15 11:24:16.602 - Info	Processing Component: Entities
+2026-09-15 11:24:16.604 - Info	Processing Component: Roles
+2026-09-15 11:24:16.609 - Info	Processing Component: Workflows
+2026-09-15 11:24:16.609 - Info	Processing Component: FieldSecurityProfiles
+2026-09-15 11:24:16.610 - Info	Processing Component: Templates
+2026-09-15 11:24:16.611 - Info	Processing Component: EntityMaps
+2026-09-15 11:24:16.611 - Info	Processing Component: EntityRelationships
+2026-09-15 11:24:16.615 - Info	Processing Component: OrganizationSettings
+2026-09-15 11:24:16.615 - Info	Processing Component: optionsets
+2026-09-15 11:24:16.616 - Info	Processing Component: CustomControls
+2026-09-15 11:24:16.637 - Info	 - JsonToForm.JsonToFormControl
+2026-09-15 11:24:16.718 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-15 11:24:16.719 - Info	Processing Component: EntityDataProviders
+2026-09-15 11:24:16.723 - Info	Processing Sharded Component Files
+2026-09-15 11:24:16.749 - Info	
+Managed Pack complete.
+
+2026-09-15 11:25:35.690 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-15 11:25:35.698 - Info	Processing Component: Entities
+2026-09-15 11:25:35.700 - Info	Processing Component: Roles
+2026-09-15 11:25:35.703 - Info	Processing Component: Workflows
+2026-09-15 11:25:35.704 - Info	Processing Component: FieldSecurityProfiles
+2026-09-15 11:25:35.704 - Info	Processing Component: Templates
+2026-09-15 11:25:35.705 - Info	Processing Component: EntityMaps
+2026-09-15 11:25:35.706 - Info	Processing Component: EntityRelationships
+2026-09-15 11:25:35.710 - Info	Processing Component: OrganizationSettings
+2026-09-15 11:25:35.710 - Info	Processing Component: optionsets
+2026-09-15 11:25:35.710 - Info	Processing Component: CustomControls
+2026-09-15 11:25:35.716 - Info	 - JsonToForm.JsonToFormControl
+2026-09-15 11:25:35.797 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-15 11:25:35.799 - Info	Processing Component: EntityDataProviders
+2026-09-15 11:25:35.802 - Info	Processing Sharded Component Files
+2026-09-15 11:25:35.823 - Info	
+Managed Pack complete.
+
+2026-09-16 10:06:57.548 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 10:06:57.557 - Info	Processing Component: Entities
+2026-09-16 10:06:57.559 - Info	Processing Component: Roles
+2026-09-16 10:06:57.561 - Info	Processing Component: Workflows
+2026-09-16 10:06:57.562 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 10:06:57.562 - Info	Processing Component: Templates
+2026-09-16 10:06:57.562 - Info	Processing Component: EntityMaps
+2026-09-16 10:06:57.563 - Info	Processing Component: EntityRelationships
+2026-09-16 10:06:57.566 - Info	Processing Component: OrganizationSettings
+2026-09-16 10:06:57.567 - Info	Processing Component: optionsets
+2026-09-16 10:06:57.567 - Info	Processing Component: CustomControls
+2026-09-16 10:06:57.576 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 10:06:57.647 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 10:06:57.648 - Info	Processing Component: EntityDataProviders
+2026-09-16 10:06:57.651 - Info	Processing Sharded Component Files
+2026-09-16 10:06:57.671 - Info	
+Managed Pack complete.
+
+2026-09-16 15:05:10.733 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 15:05:10.779 - Info	Processing Component: Entities
+2026-09-16 15:05:10.782 - Info	Processing Component: Roles
+2026-09-16 15:05:10.789 - Info	Processing Component: Workflows
+2026-09-16 15:05:10.789 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 15:05:10.790 - Info	Processing Component: Templates
+2026-09-16 15:05:10.792 - Info	Processing Component: EntityMaps
+2026-09-16 15:05:10.793 - Info	Processing Component: EntityRelationships
+2026-09-16 15:05:10.815 - Info	Processing Component: OrganizationSettings
+2026-09-16 15:05:10.817 - Info	Processing Component: optionsets
+2026-09-16 15:05:10.818 - Info	Processing Component: CustomControls
+2026-09-16 15:05:10.846 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 15:05:10.927 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 15:05:10.928 - Info	Processing Component: EntityDataProviders
+2026-09-16 15:05:10.933 - Info	Processing Sharded Component Files
+2026-09-16 15:05:10.982 - Info	
+Managed Pack complete.
+
+2026-09-16 15:39:25.738 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 15:39:25.765 - Info	Processing Component: Entities
+2026-09-16 15:39:25.769 - Info	Processing Component: Roles
+2026-09-16 15:39:25.774 - Info	Processing Component: Workflows
+2026-09-16 15:39:25.774 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 15:39:25.775 - Info	Processing Component: Templates
+2026-09-16 15:39:25.776 - Info	Processing Component: EntityMaps
+2026-09-16 15:39:25.776 - Info	Processing Component: EntityRelationships
+2026-09-16 15:39:25.800 - Info	Processing Component: OrganizationSettings
+2026-09-16 15:39:25.800 - Info	Processing Component: optionsets
+2026-09-16 15:39:25.800 - Info	Processing Component: CustomControls
+2026-09-16 15:39:25.823 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 15:39:25.905 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 15:39:25.906 - Info	Processing Component: EntityDataProviders
+2026-09-16 15:39:25.910 - Info	Processing Sharded Component Files
+2026-09-16 15:39:25.931 - Info	
+Managed Pack complete.
+
+2026-09-16 15:50:57.009 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 15:50:57.048 - Info	Processing Component: Entities
+2026-09-16 15:50:57.051 - Info	Processing Component: Roles
+2026-09-16 15:50:57.055 - Info	Processing Component: Workflows
+2026-09-16 15:50:57.056 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 15:50:57.056 - Info	Processing Component: Templates
+2026-09-16 15:50:57.057 - Info	Processing Component: EntityMaps
+2026-09-16 15:50:57.057 - Info	Processing Component: EntityRelationships
+2026-09-16 15:50:57.084 - Info	Processing Component: OrganizationSettings
+2026-09-16 15:50:57.085 - Info	Processing Component: optionsets
+2026-09-16 15:50:57.085 - Info	Processing Component: CustomControls
+2026-09-16 15:50:57.110 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 15:50:57.176 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 15:50:57.176 - Info	Processing Component: EntityDataProviders
+2026-09-16 15:50:57.182 - Info	Processing Sharded Component Files
+2026-09-16 15:50:57.227 - Info	
+Managed Pack complete.
+
+2026-09-16 16:00:30.349 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:00:30.378 - Info	Processing Component: Entities
+2026-09-16 16:00:30.381 - Info	Processing Component: Roles
+2026-09-16 16:00:30.386 - Info	Processing Component: Workflows
+2026-09-16 16:00:30.387 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:00:30.388 - Info	Processing Component: Templates
+2026-09-16 16:00:30.390 - Info	Processing Component: EntityMaps
+2026-09-16 16:00:30.391 - Info	Processing Component: EntityRelationships
+2026-09-16 16:00:30.413 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:00:30.414 - Info	Processing Component: optionsets
+2026-09-16 16:00:30.415 - Info	Processing Component: CustomControls
+2026-09-16 16:00:30.440 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:00:30.518 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:00:30.520 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:00:30.524 - Info	Processing Sharded Component Files
+2026-09-16 16:00:30.560 - Info	
+Managed Pack complete.
+
+2026-09-16 16:11:22.033 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:11:22.052 - Info	Processing Component: Entities
+2026-09-16 16:11:22.056 - Info	Processing Component: Roles
+2026-09-16 16:11:22.062 - Info	Processing Component: Workflows
+2026-09-16 16:11:22.062 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:11:22.063 - Info	Processing Component: Templates
+2026-09-16 16:11:22.064 - Info	Processing Component: EntityMaps
+2026-09-16 16:11:22.064 - Info	Processing Component: EntityRelationships
+2026-09-16 16:11:22.069 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:11:22.070 - Info	Processing Component: optionsets
+2026-09-16 16:11:22.070 - Info	Processing Component: CustomControls
+2026-09-16 16:11:22.082 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:11:22.157 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:11:22.159 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:11:22.163 - Info	Processing Sharded Component Files
+2026-09-16 16:11:22.194 - Info	
+Managed Pack complete.
+
+2026-09-16 16:17:58.083 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:17:58.097 - Info	Processing Component: Entities
+2026-09-16 16:17:58.100 - Info	Processing Component: Roles
+2026-09-16 16:17:58.104 - Info	Processing Component: Workflows
+2026-09-16 16:17:58.104 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:17:58.105 - Info	Processing Component: Templates
+2026-09-16 16:17:58.106 - Info	Processing Component: EntityMaps
+2026-09-16 16:17:58.106 - Info	Processing Component: EntityRelationships
+2026-09-16 16:17:58.110 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:17:58.110 - Info	Processing Component: optionsets
+2026-09-16 16:17:58.111 - Info	Processing Component: CustomControls
+2026-09-16 16:17:58.122 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:17:58.192 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:17:58.193 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:17:58.197 - Info	Processing Sharded Component Files
+2026-09-16 16:17:58.218 - Info	
+Managed Pack complete.
+
+2026-09-16 16:21:25.673 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:21:25.687 - Info	Processing Component: Entities
+2026-09-16 16:21:25.691 - Info	Processing Component: Roles
+2026-09-16 16:21:25.694 - Info	Processing Component: Workflows
+2026-09-16 16:21:25.695 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:21:25.696 - Info	Processing Component: Templates
+2026-09-16 16:21:25.696 - Info	Processing Component: EntityMaps
+2026-09-16 16:21:25.697 - Info	Processing Component: EntityRelationships
+2026-09-16 16:21:25.701 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:21:25.702 - Info	Processing Component: optionsets
+2026-09-16 16:21:25.703 - Info	Processing Component: CustomControls
+2026-09-16 16:21:25.714 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:21:25.788 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:21:25.789 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:21:25.793 - Info	Processing Sharded Component Files
+2026-09-16 16:21:25.826 - Info	
+Managed Pack complete.
+
+2026-09-16 16:21:39.970 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:21:39.980 - Info	Processing Component: Entities
+2026-09-16 16:21:39.983 - Info	Processing Component: Roles
+2026-09-16 16:21:39.987 - Info	Processing Component: Workflows
+2026-09-16 16:21:39.988 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:21:39.989 - Info	Processing Component: Templates
+2026-09-16 16:21:39.990 - Info	Processing Component: EntityMaps
+2026-09-16 16:21:39.991 - Info	Processing Component: EntityRelationships
+2026-09-16 16:21:39.995 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:21:39.996 - Info	Processing Component: optionsets
+2026-09-16 16:21:39.996 - Info	Processing Component: CustomControls
+2026-09-16 16:21:40.007 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:21:40.092 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:21:40.093 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:21:40.096 - Info	Processing Sharded Component Files
+2026-09-16 16:21:40.120 - Info	
+Managed Pack complete.
+
+2026-09-16 16:30:19.514 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:30:19.526 - Info	Processing Component: Entities
+2026-09-16 16:30:19.530 - Info	Processing Component: Roles
+2026-09-16 16:30:19.534 - Info	Processing Component: Workflows
+2026-09-16 16:30:19.535 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:30:19.535 - Info	Processing Component: Templates
+2026-09-16 16:30:19.536 - Info	Processing Component: EntityMaps
+2026-09-16 16:30:19.536 - Info	Processing Component: EntityRelationships
+2026-09-16 16:30:19.540 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:30:19.541 - Info	Processing Component: optionsets
+2026-09-16 16:30:19.541 - Info	Processing Component: CustomControls
+2026-09-16 16:30:19.553 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:30:19.632 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:30:19.633 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:30:19.636 - Info	Processing Sharded Component Files
+2026-09-16 16:30:19.667 - Info	
+Managed Pack complete.
+
+2026-09-16 16:42:01.771 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:42:01.780 - Info	Processing Component: Entities
+2026-09-16 16:42:01.782 - Info	Processing Component: Roles
+2026-09-16 16:42:01.784 - Info	Processing Component: Workflows
+2026-09-16 16:42:01.785 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:42:01.785 - Info	Processing Component: Templates
+2026-09-16 16:42:01.786 - Info	Processing Component: EntityMaps
+2026-09-16 16:42:01.786 - Info	Processing Component: EntityRelationships
+2026-09-16 16:42:01.789 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:42:01.789 - Info	Processing Component: optionsets
+2026-09-16 16:42:01.790 - Info	Processing Component: CustomControls
+2026-09-16 16:42:01.798 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:42:01.865 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:42:01.866 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:42:01.869 - Info	Processing Sharded Component Files
+2026-09-16 16:42:01.890 - Info	
+Managed Pack complete.
+
+2026-09-16 16:47:16.392 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:47:16.400 - Info	Processing Component: Entities
+2026-09-16 16:47:16.402 - Info	Processing Component: Roles
+2026-09-16 16:47:16.406 - Info	Processing Component: Workflows
+2026-09-16 16:47:16.406 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:47:16.407 - Info	Processing Component: Templates
+2026-09-16 16:47:16.408 - Info	Processing Component: EntityMaps
+2026-09-16 16:47:16.409 - Info	Processing Component: EntityRelationships
+2026-09-16 16:47:16.412 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:47:16.413 - Info	Processing Component: optionsets
+2026-09-16 16:47:16.413 - Info	Processing Component: CustomControls
+2026-09-16 16:47:16.437 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:47:16.523 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:47:16.524 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:47:16.526 - Info	Processing Sharded Component Files
+2026-09-16 16:47:16.551 - Info	
+Managed Pack complete.
+
+2026-09-16 16:48:27.407 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:48:27.422 - Info	Processing Component: Entities
+2026-09-16 16:48:27.424 - Info	Processing Component: Roles
+2026-09-16 16:48:27.427 - Info	Processing Component: Workflows
+2026-09-16 16:48:27.428 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:48:27.428 - Info	Processing Component: Templates
+2026-09-16 16:48:27.429 - Info	Processing Component: EntityMaps
+2026-09-16 16:48:27.429 - Info	Processing Component: EntityRelationships
+2026-09-16 16:48:27.433 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:48:27.434 - Info	Processing Component: optionsets
+2026-09-16 16:48:27.435 - Info	Processing Component: CustomControls
+2026-09-16 16:48:27.468 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:48:27.535 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:48:27.535 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:48:27.539 - Info	Processing Sharded Component Files
+2026-09-16 16:48:27.575 - Info	
+Managed Pack complete.
+
+2026-09-16 16:49:36.974 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:49:36.995 - Info	Processing Component: Entities
+2026-09-16 16:49:36.999 - Info	Processing Component: Roles
+2026-09-16 16:49:37.006 - Info	Processing Component: Workflows
+2026-09-16 16:49:37.007 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:49:37.008 - Info	Processing Component: Templates
+2026-09-16 16:49:37.008 - Info	Processing Component: EntityMaps
+2026-09-16 16:49:37.009 - Info	Processing Component: EntityRelationships
+2026-09-16 16:49:37.012 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:49:37.014 - Info	Processing Component: optionsets
+2026-09-16 16:49:37.014 - Info	Processing Component: CustomControls
+2026-09-16 16:49:37.026 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:49:37.095 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:49:37.096 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:49:37.102 - Info	Processing Sharded Component Files
+2026-09-16 16:49:37.133 - Info	
+Managed Pack complete.
+
+2026-09-16 16:51:12.654 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:51:12.662 - Info	Processing Component: Entities
+2026-09-16 16:51:12.663 - Info	Processing Component: Roles
+2026-09-16 16:51:12.667 - Info	Processing Component: Workflows
+2026-09-16 16:51:12.667 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:51:12.668 - Info	Processing Component: Templates
+2026-09-16 16:51:12.668 - Info	Processing Component: EntityMaps
+2026-09-16 16:51:12.669 - Info	Processing Component: EntityRelationships
+2026-09-16 16:51:12.672 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:51:12.673 - Info	Processing Component: optionsets
+2026-09-16 16:51:12.673 - Info	Processing Component: CustomControls
+2026-09-16 16:51:12.698 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:51:12.759 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:51:12.760 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:51:12.763 - Info	Processing Sharded Component Files
+2026-09-16 16:51:12.796 - Info	
+Managed Pack complete.
+
+2026-09-16 16:55:02.420 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-16 16:55:02.437 - Info	Processing Component: Entities
+2026-09-16 16:55:02.439 - Info	Processing Component: Roles
+2026-09-16 16:55:02.442 - Info	Processing Component: Workflows
+2026-09-16 16:55:02.443 - Info	Processing Component: FieldSecurityProfiles
+2026-09-16 16:55:02.443 - Info	Processing Component: Templates
+2026-09-16 16:55:02.444 - Info	Processing Component: EntityMaps
+2026-09-16 16:55:02.445 - Info	Processing Component: EntityRelationships
+2026-09-16 16:55:02.449 - Info	Processing Component: OrganizationSettings
+2026-09-16 16:55:02.450 - Info	Processing Component: optionsets
+2026-09-16 16:55:02.450 - Info	Processing Component: CustomControls
+2026-09-16 16:55:02.461 - Info	 - JsonToForm.JsonToFormControl
+2026-09-16 16:55:02.546 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-16 16:55:02.547 - Info	Processing Component: EntityDataProviders
+2026-09-16 16:55:02.550 - Info	Processing Sharded Component Files
+2026-09-16 16:55:02.574 - Info	
+Managed Pack complete.
+
+2026-09-17 08:44:52.982 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 08:44:53.013 - Info	Processing Component: Entities
+2026-09-17 08:44:53.016 - Info	Processing Component: Roles
+2026-09-17 08:44:53.018 - Info	Processing Component: Workflows
+2026-09-17 08:44:53.019 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 08:44:53.019 - Info	Processing Component: Templates
+2026-09-17 08:44:53.020 - Info	Processing Component: EntityMaps
+2026-09-17 08:44:53.020 - Info	Processing Component: EntityRelationships
+2026-09-17 08:44:53.048 - Info	Processing Component: OrganizationSettings
+2026-09-17 08:44:53.049 - Info	Processing Component: optionsets
+2026-09-17 08:44:53.049 - Info	Processing Component: CustomControls
+2026-09-17 08:44:53.069 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 08:44:53.151 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 08:44:53.152 - Info	Processing Component: EntityDataProviders
+2026-09-17 08:44:53.154 - Info	Processing Sharded Component Files
+2026-09-17 08:44:53.180 - Info	
+Managed Pack complete.
+
+2026-09-17 08:48:22.775 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 08:48:22.797 - Info	Processing Component: Entities
+2026-09-17 08:48:22.801 - Info	Processing Component: Roles
+2026-09-17 08:48:22.808 - Info	Processing Component: Workflows
+2026-09-17 08:48:22.809 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 08:48:22.809 - Info	Processing Component: Templates
+2026-09-17 08:48:22.810 - Info	Processing Component: EntityMaps
+2026-09-17 08:48:22.810 - Info	Processing Component: EntityRelationships
+2026-09-17 08:48:22.813 - Info	Processing Component: OrganizationSettings
+2026-09-17 08:48:22.814 - Info	Processing Component: optionsets
+2026-09-17 08:48:22.815 - Info	Processing Component: CustomControls
+2026-09-17 08:48:22.824 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 08:48:22.906 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 08:48:22.907 - Info	Processing Component: EntityDataProviders
+2026-09-17 08:48:22.914 - Info	Processing Sharded Component Files
+2026-09-17 08:48:22.954 - Info	
+Managed Pack complete.
+
+2026-09-17 09:49:14.760 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 09:49:14.772 - Info	Processing Component: Entities
+2026-09-17 09:49:14.775 - Info	Processing Component: Roles
+2026-09-17 09:49:14.778 - Info	Processing Component: Workflows
+2026-09-17 09:49:14.779 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 09:49:14.779 - Info	Processing Component: Templates
+2026-09-17 09:49:14.780 - Info	Processing Component: EntityMaps
+2026-09-17 09:49:14.780 - Info	Processing Component: EntityRelationships
+2026-09-17 09:49:14.784 - Info	Processing Component: OrganizationSettings
+2026-09-17 09:49:14.784 - Info	Processing Component: optionsets
+2026-09-17 09:49:14.785 - Info	Processing Component: CustomControls
+2026-09-17 09:49:14.810 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 09:49:14.904 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 09:49:14.905 - Info	Processing Component: EntityDataProviders
+2026-09-17 09:49:14.908 - Info	Processing Sharded Component Files
+2026-09-17 09:49:14.930 - Info	
+Managed Pack complete.
+
+2026-09-17 10:13:15.527 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 10:13:15.551 - Info	Processing Component: Entities
+2026-09-17 10:13:15.555 - Info	Processing Component: Roles
+2026-09-17 10:13:15.562 - Info	Processing Component: Workflows
+2026-09-17 10:13:15.562 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 10:13:15.563 - Info	Processing Component: Templates
+2026-09-17 10:13:15.565 - Info	Processing Component: EntityMaps
+2026-09-17 10:13:15.566 - Info	Processing Component: EntityRelationships
+2026-09-17 10:13:15.573 - Info	Processing Component: OrganizationSettings
+2026-09-17 10:13:15.574 - Info	Processing Component: optionsets
+2026-09-17 10:13:15.575 - Info	Processing Component: CustomControls
+2026-09-17 10:13:15.606 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 10:13:16.009 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 10:13:16.010 - Info	Processing Component: EntityDataProviders
+2026-09-17 10:13:16.019 - Info	Processing Sharded Component Files
+2026-09-17 10:13:16.083 - Info	
+Managed Pack complete.
+
+2026-09-17 10:14:07.522 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 10:14:07.540 - Info	Processing Component: Entities
+2026-09-17 10:14:07.543 - Info	Processing Component: Roles
+2026-09-17 10:14:07.548 - Info	Processing Component: Workflows
+2026-09-17 10:14:07.548 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 10:14:07.549 - Info	Processing Component: Templates
+2026-09-17 10:14:07.549 - Info	Processing Component: EntityMaps
+2026-09-17 10:14:07.550 - Info	Processing Component: EntityRelationships
+2026-09-17 10:14:07.554 - Info	Processing Component: OrganizationSettings
+2026-09-17 10:14:07.555 - Info	Processing Component: optionsets
+2026-09-17 10:14:07.556 - Info	Processing Component: CustomControls
+2026-09-17 10:14:07.566 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 10:14:07.624 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 10:14:07.625 - Info	Processing Component: EntityDataProviders
+2026-09-17 10:14:07.630 - Info	Processing Sharded Component Files
+2026-09-17 10:14:07.687 - Info	
+Managed Pack complete.
+
+2026-09-17 10:26:01.619 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 10:26:01.652 - Info	Processing Component: Entities
+2026-09-17 10:26:01.654 - Info	Processing Component: Roles
+2026-09-17 10:26:01.656 - Info	Processing Component: Workflows
+2026-09-17 10:26:01.657 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 10:26:01.657 - Info	Processing Component: Templates
+2026-09-17 10:26:01.657 - Info	Processing Component: EntityMaps
+2026-09-17 10:26:01.658 - Info	Processing Component: EntityRelationships
+2026-09-17 10:26:01.684 - Info	Processing Component: OrganizationSettings
+2026-09-17 10:26:01.685 - Info	Processing Component: optionsets
+2026-09-17 10:26:01.685 - Info	Processing Component: CustomControls
+2026-09-17 10:26:01.692 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 10:26:01.779 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 10:26:01.780 - Info	Processing Component: EntityDataProviders
+2026-09-17 10:26:01.784 - Info	Processing Sharded Component Files
+2026-09-17 10:26:01.814 - Info	
+Managed Pack complete.
+
+2026-09-17 10:37:19.767 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 10:37:19.804 - Info	Processing Component: Entities
+2026-09-17 10:37:19.808 - Info	Processing Component: Roles
+2026-09-17 10:37:19.814 - Info	Processing Component: Workflows
+2026-09-17 10:37:19.815 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 10:37:19.815 - Info	Processing Component: Templates
+2026-09-17 10:37:19.816 - Info	Processing Component: EntityMaps
+2026-09-17 10:37:19.816 - Info	Processing Component: EntityRelationships
+2026-09-17 10:37:19.844 - Info	Processing Component: OrganizationSettings
+2026-09-17 10:37:19.846 - Info	Processing Component: optionsets
+2026-09-17 10:37:19.846 - Info	Processing Component: CustomControls
+2026-09-17 10:37:19.873 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 10:37:20.286 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 10:37:20.287 - Info	Processing Component: EntityDataProviders
+2026-09-17 10:37:20.292 - Info	Processing Sharded Component Files
+2026-09-17 10:37:20.332 - Info	
+Managed Pack complete.
+
+2026-09-17 14:07:34.155 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 14:07:34.163 - Info	Processing Component: Entities
+2026-09-17 14:07:34.165 - Info	Processing Component: Roles
+2026-09-17 14:07:34.168 - Info	Processing Component: Workflows
+2026-09-17 14:07:34.168 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 14:07:34.168 - Info	Processing Component: Templates
+2026-09-17 14:07:34.169 - Info	Processing Component: EntityMaps
+2026-09-17 14:07:34.170 - Info	Processing Component: EntityRelationships
+2026-09-17 14:07:34.173 - Info	Processing Component: OrganizationSettings
+2026-09-17 14:07:34.174 - Info	Processing Component: optionsets
+2026-09-17 14:07:34.174 - Info	Processing Component: CustomControls
+2026-09-17 14:07:34.179 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 14:07:34.255 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 14:07:34.256 - Info	Processing Component: EntityDataProviders
+2026-09-17 14:07:34.258 - Info	Processing Sharded Component Files
+2026-09-17 14:07:34.292 - Info	
+Managed Pack complete.
+
+2026-09-17 14:46:17.248 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 14:46:17.256 - Info	Processing Component: Entities
+2026-09-17 14:46:17.258 - Info	Processing Component: Roles
+2026-09-17 14:46:17.260 - Info	Processing Component: Workflows
+2026-09-17 14:46:17.260 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 14:46:17.261 - Info	Processing Component: Templates
+2026-09-17 14:46:17.261 - Info	Processing Component: EntityMaps
+2026-09-17 14:46:17.261 - Info	Processing Component: EntityRelationships
+2026-09-17 14:46:17.265 - Info	Processing Component: OrganizationSettings
+2026-09-17 14:46:17.267 - Info	Processing Component: optionsets
+2026-09-17 14:46:17.267 - Info	Processing Component: CustomControls
+2026-09-17 14:46:17.273 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 14:46:17.342 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 14:46:17.343 - Info	Processing Component: EntityDataProviders
+2026-09-17 14:46:17.346 - Info	Processing Sharded Component Files
+2026-09-17 14:46:17.375 - Info	
+Managed Pack complete.
+
+2026-09-17 14:47:43.941 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 14:47:43.950 - Info	Processing Component: Entities
+2026-09-17 14:47:43.952 - Info	Processing Component: Roles
+2026-09-17 14:47:43.955 - Info	Processing Component: Workflows
+2026-09-17 14:47:43.955 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 14:47:43.977 - Info	Processing Component: Templates
+2026-09-17 14:47:43.978 - Info	Processing Component: EntityMaps
+2026-09-17 14:47:43.979 - Info	Processing Component: EntityRelationships
+2026-09-17 14:47:43.982 - Info	Processing Component: OrganizationSettings
+2026-09-17 14:47:43.983 - Info	Processing Component: optionsets
+2026-09-17 14:47:43.984 - Info	Processing Component: CustomControls
+2026-09-17 14:47:44.004 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 14:47:44.481 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 14:47:44.482 - Info	Processing Component: EntityDataProviders
+2026-09-17 14:47:44.484 - Info	Processing Sharded Component Files
+2026-09-17 14:47:44.506 - Info	
+Managed Pack complete.
+
+2026-09-17 15:17:00.056 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 15:17:00.095 - Info	Processing Component: Entities
+2026-09-17 15:17:00.099 - Info	Processing Component: Roles
+2026-09-17 15:17:00.104 - Info	Processing Component: Workflows
+2026-09-17 15:17:00.104 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 15:17:00.105 - Info	Processing Component: Templates
+2026-09-17 15:17:00.106 - Info	Processing Component: EntityMaps
+2026-09-17 15:17:00.107 - Info	Processing Component: EntityRelationships
+2026-09-17 15:17:00.132 - Info	Processing Component: OrganizationSettings
+2026-09-17 15:17:00.134 - Info	Processing Component: optionsets
+2026-09-17 15:17:00.134 - Info	Processing Component: CustomControls
+2026-09-17 15:17:00.156 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 15:17:00.521 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 15:17:00.522 - Info	Processing Component: EntityDataProviders
+2026-09-17 15:17:00.527 - Info	Processing Sharded Component Files
+2026-09-17 15:17:00.553 - Info	
+Managed Pack complete.
+
+2026-09-17 15:19:42.293 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 15:19:42.307 - Info	Processing Component: Entities
+2026-09-17 15:19:42.311 - Info	Processing Component: Roles
+2026-09-17 15:19:42.316 - Info	Processing Component: Workflows
+2026-09-17 15:19:42.316 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 15:19:42.317 - Info	Processing Component: Templates
+2026-09-17 15:19:42.318 - Info	Processing Component: EntityMaps
+2026-09-17 15:19:42.318 - Info	Processing Component: EntityRelationships
+2026-09-17 15:19:42.321 - Info	Processing Component: OrganizationSettings
+2026-09-17 15:19:42.321 - Info	Processing Component: optionsets
+2026-09-17 15:19:42.321 - Info	Processing Component: CustomControls
+2026-09-17 15:19:42.343 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 15:19:42.703 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 15:19:42.704 - Info	Processing Component: EntityDataProviders
+2026-09-17 15:19:42.707 - Info	Processing Sharded Component Files
+2026-09-17 15:19:42.729 - Info	
+Managed Pack complete.
+
+2026-09-17 15:24:17.573 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 15:24:17.595 - Info	Processing Component: Entities
+2026-09-17 15:24:17.600 - Info	Processing Component: Roles
+2026-09-17 15:24:17.605 - Info	Processing Component: Workflows
+2026-09-17 15:24:17.605 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 15:24:17.606 - Info	Processing Component: Templates
+2026-09-17 15:24:17.607 - Info	Processing Component: EntityMaps
+2026-09-17 15:24:17.607 - Info	Processing Component: EntityRelationships
+2026-09-17 15:24:17.611 - Info	Processing Component: OrganizationSettings
+2026-09-17 15:24:17.611 - Info	Processing Component: optionsets
+2026-09-17 15:24:17.612 - Info	Processing Component: CustomControls
+2026-09-17 15:24:17.636 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 15:24:18.038 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 15:24:18.038 - Info	Processing Component: EntityDataProviders
+2026-09-17 15:24:18.042 - Info	Processing Sharded Component Files
+2026-09-17 15:24:18.064 - Info	
+Managed Pack complete.
+
+2026-09-17 15:30:49.425 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 15:30:49.436 - Info	Processing Component: Entities
+2026-09-17 15:30:49.438 - Info	Processing Component: Roles
+2026-09-17 15:30:49.442 - Info	Processing Component: Workflows
+2026-09-17 15:30:49.443 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 15:30:49.443 - Info	Processing Component: Templates
+2026-09-17 15:30:49.444 - Info	Processing Component: EntityMaps
+2026-09-17 15:30:49.444 - Info	Processing Component: EntityRelationships
+2026-09-17 15:30:49.448 - Info	Processing Component: OrganizationSettings
+2026-09-17 15:30:49.449 - Info	Processing Component: optionsets
+2026-09-17 15:30:49.449 - Info	Processing Component: CustomControls
+2026-09-17 15:30:49.475 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 15:30:49.942 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 15:30:49.943 - Info	Processing Component: EntityDataProviders
+2026-09-17 15:30:49.946 - Info	Processing Sharded Component Files
+2026-09-17 15:30:49.972 - Info	
+Managed Pack complete.
+
+2026-09-17 15:53:10.275 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 15:53:10.314 - Info	Processing Component: Entities
+2026-09-17 15:53:10.318 - Info	Processing Component: Roles
+2026-09-17 15:53:10.324 - Info	Processing Component: Workflows
+2026-09-17 15:53:10.324 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 15:53:10.325 - Info	Processing Component: Templates
+2026-09-17 15:53:10.326 - Info	Processing Component: EntityMaps
+2026-09-17 15:53:10.326 - Info	Processing Component: EntityRelationships
+2026-09-17 15:53:10.351 - Info	Processing Component: OrganizationSettings
+2026-09-17 15:53:10.352 - Info	Processing Component: optionsets
+2026-09-17 15:53:10.353 - Info	Processing Component: CustomControls
+2026-09-17 15:53:10.384 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 15:53:10.804 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 15:53:10.805 - Info	Processing Component: EntityDataProviders
+2026-09-17 15:53:10.808 - Info	Processing Sharded Component Files
+2026-09-17 15:53:10.829 - Info	
+Managed Pack complete.
+
+2026-09-17 15:59:28.074 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-17 15:59:28.110 - Info	Processing Component: Entities
+2026-09-17 15:59:28.115 - Info	Processing Component: Roles
+2026-09-17 15:59:28.120 - Info	Processing Component: Workflows
+2026-09-17 15:59:28.121 - Info	Processing Component: FieldSecurityProfiles
+2026-09-17 15:59:28.122 - Info	Processing Component: Templates
+2026-09-17 15:59:28.123 - Info	Processing Component: EntityMaps
+2026-09-17 15:59:28.123 - Info	Processing Component: EntityRelationships
+2026-09-17 15:59:28.145 - Info	Processing Component: OrganizationSettings
+2026-09-17 15:59:28.146 - Info	Processing Component: optionsets
+2026-09-17 15:59:28.147 - Info	Processing Component: CustomControls
+2026-09-17 15:59:28.172 - Info	 - JsonToForm.JsonToFormControl
+2026-09-17 15:59:28.668 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-17 15:59:28.669 - Info	Processing Component: EntityDataProviders
+2026-09-17 15:59:28.675 - Info	Processing Sharded Component Files
+2026-09-17 15:59:28.719 - Info	
+Managed Pack complete.
+
+2026-09-18 14:17:24.303 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-18 14:17:24.325 - Info	Processing Component: Entities
+2026-09-18 14:17:24.332 - Info	Processing Component: Roles
+2026-09-18 14:17:24.338 - Info	Processing Component: Workflows
+2026-09-18 14:17:24.338 - Info	Processing Component: FieldSecurityProfiles
+2026-09-18 14:17:24.339 - Info	Processing Component: Templates
+2026-09-18 14:17:24.340 - Info	Processing Component: EntityMaps
+2026-09-18 14:17:24.340 - Info	Processing Component: EntityRelationships
+2026-09-18 14:17:24.343 - Info	Processing Component: OrganizationSettings
+2026-09-18 14:17:24.344 - Info	Processing Component: optionsets
+2026-09-18 14:17:24.345 - Info	Processing Component: CustomControls
+2026-09-18 14:17:24.358 - Info	 - JsonToForm.JsonToFormControl
+2026-09-18 14:17:24.433 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-18 14:17:24.434 - Info	Processing Component: EntityDataProviders
+2026-09-18 14:17:24.440 - Info	Processing Sharded Component Files
+2026-09-18 14:17:24.508 - Info	
+Managed Pack complete.
+
+2026-09-22 10:24:40.806 - Info	
+Packing C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\Metadata to bin\Release\JsonToFormControlSolution.zip
+
+2026-09-22 10:24:40.844 - Info	Processing Component: Entities
+2026-09-22 10:24:40.848 - Info	Processing Component: Roles
+2026-09-22 10:24:40.854 - Info	Processing Component: Workflows
+2026-09-22 10:24:40.855 - Info	Processing Component: FieldSecurityProfiles
+2026-09-22 10:24:40.855 - Info	Processing Component: Templates
+2026-09-22 10:24:40.856 - Info	Processing Component: EntityMaps
+2026-09-22 10:24:40.857 - Info	Processing Component: EntityRelationships
+2026-09-22 10:24:40.877 - Info	Processing Component: OrganizationSettings
+2026-09-22 10:24:40.877 - Info	Processing Component: optionsets
+2026-09-22 10:24:40.878 - Info	Processing Component: CustomControls
+2026-09-22 10:24:40.904 - Info	 - JsonToForm.JsonToFormControl
+2026-09-22 10:24:41.317 - Info	Processing Component: SolutionPluginAssemblies
+2026-09-22 10:24:41.318 - Info	Processing Component: EntityDataProviders
+2026-09-22 10:24:41.322 - Info	Processing Sharded Component Files
+2026-09-22 10:24:41.366 - Info	
+Managed Pack complete.
+

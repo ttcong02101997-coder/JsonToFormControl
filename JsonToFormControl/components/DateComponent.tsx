@@ -1,7 +1,7 @@
-import { Input, makeStyles, tokens, } from "@fluentui/react-components";
+import { FluentProvider, Input, makeStyles, tokens, webLightTheme } from "@fluentui/react-components";
+import ReactDOM from "react-dom";
 import React, { useEffect, useMemo, useRef, useState, } from "react";
-import { buildCalendarDays, formatDateValue, normalizeDate, parseInputDate, parseIsoDate, sameDate, toIsoDate } from "../ShareLibs/Shared";
-import { IconLock } from "../ShareLibs/Icons";
+import { buildCalendarDays, formatDateValue, normalizeDate, parseInputDate, parseIsoDate, sameDate, toIsoDate, UILabelRequire, UIRequireField } from "../ShareLibs/Shared";
 import { FieldComponentProps } from "../ShareLibs/Models";
 
 const useStyles = makeStyles({
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 
     styleField: {
         display: "flex",
-        gap: "2px",
+        gap: "4px",
         flexDirection: "row",
 
         "@media (max-width: 425px)": {
@@ -72,7 +72,7 @@ const useStyles = makeStyles({
     },
 
     calendarPopup: {
-        position: "absolute",
+        position: "fixed",
         left: 0,
         zIndex: 999999,
 
@@ -215,7 +215,7 @@ const DateComponent = ({ setFieldValue, value, isDisable, isRequired, label, log
     const [date, setDate] = useState<string>(() => normalizeDate(value));
     const [inputValue, setInputValue] = useState<string>("");
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-    const [calendarAbove, setCalendarAbove] = useState(false);
+    const [calendarPosition, setCalendarPosition] = useState<React.CSSProperties>({});
     const [inputError, setInputError] = useState("");
     const wrapperRef = useRef<HTMLDivElement>(null);
     const popupRef = useRef<HTMLDivElement>(null);
@@ -238,7 +238,12 @@ const DateComponent = ({ setFieldValue, value, isDisable, isRequired, label, log
         }
 
         const rect = wrapper.getBoundingClientRect();
-        setCalendarAbove(window.innerHeight - rect.bottom < 350);
+        const calendarAbove = window.innerHeight - rect.bottom < 350;
+        setCalendarPosition({
+            left: rect.left,
+            top: calendarAbove ? undefined : rect.bottom,
+            bottom: calendarAbove ? window.innerHeight - rect.top : undefined,
+        });
     };
 
 
@@ -424,11 +429,9 @@ const DateComponent = ({ setFieldValue, value, isDisable, isRequired, label, log
         return (
             <div className={styles.styleOverField} key={logicalName}>
                 <div className={styles.styleField}>
-                    <div style={{ minWidth: 180, display: "flex", gap: "2px", flexDirection: "row" }}>
-                        <label style={{ paddingBlockStart: 2, marginInlineEnd: 4, width: "100%", marginBottom: 5, }}>{label}</label>
-                        {isRequired ? <span style={{ color: "red", paddingBlockStart: 2, marginInlineEnd: 2, textShadow: "0 0 black" }}>*</span> : <span style={{ color: "white", paddingBlockStart: 2, marginInlineEnd: 2 }}>*</span>}
-                        {isDisable ? <IconLock /> : null}
-                    </div>
+                    {
+                        UILabelRequire(isRequired, isDisable, label)
+                    }
                     {!isDisable ? (
                         <div style={{ width: "100%", }}>
                             <div ref={wrapperRef} className={styles.wrapper}>
@@ -482,77 +485,77 @@ const DateComponent = ({ setFieldValue, value, isDisable, isRequired, label, log
                                         />
                                     </svg>
                                 </button>
-                                {isCalendarOpen && (
-                                    <div ref={popupRef} className={styles.calendarPopup} style={{
-                                        top: calendarAbove ? "auto" : "100%",
-                                        bottom: calendarAbove ? "100%" : "auto",
-                                    }}>
-                                        <div className={styles.calendarHeader}>
-                                            <button
-                                                type="button"
-                                                className={styles.navigationButton}
-                                                onClick={handlePreviousMonth}
-                                            >
-                                                ‹
-                                            </button>
+                                {isCalendarOpen && ReactDOM.createPortal(
+                                    <FluentProvider theme={webLightTheme}>
+                                        <div ref={popupRef} className={styles.calendarPopup} style={calendarPosition}>
+                                            <div className={styles.calendarHeader}>
+                                                <button
+                                                    type="button"
+                                                    className={styles.navigationButton}
+                                                    onClick={handlePreviousMonth}
+                                                >
+                                                    ‹
+                                                </button>
 
-                                            <div className={styles.monthTitle}>{monthTitle}</div>
+                                                <div className={styles.monthTitle}>{monthTitle}</div>
 
-                                            <button
-                                                type="button"
-                                                className={styles.navigationButton}
-                                                onClick={handleNextMonth}
-                                            >
-                                                ›
-                                            </button>
-                                        </div>
+                                                <button
+                                                    type="button"
+                                                    className={styles.navigationButton}
+                                                    onClick={handleNextMonth}
+                                                >
+                                                    ›
+                                                </button>
+                                            </div>
 
-                                        <div className={styles.weekHeader}>
-                                            {
-                                                weekDays.map((day) => (
-                                                    <div key={day} className={styles.weekDay}>{day}</div>
-                                                ))
-                                            }
-                                        </div>
+                                            <div className={styles.weekHeader}>
+                                                {
+                                                    weekDays.map((day) => (
+                                                        <div key={day} className={styles.weekDay}>{day}</div>
+                                                    ))
+                                                }
+                                            </div>
 
-                                        <div className={styles.daysGrid}>
-                                            {
-                                                calendarDays.map((item) => {
-                                                    const isSelected = sameDate(item.date, selectedDate);
-                                                    const isToday = sameDate(item.date, today);
+                                            <div className={styles.daysGrid}>
+                                                {
+                                                    calendarDays.map((item) => {
+                                                        const isSelected = sameDate(item.date, selectedDate);
+                                                        const isToday = sameDate(item.date, today);
 
-                                                    return (
-                                                        <button
-                                                            key={`${item.date.getFullYear()}-${item.date.getMonth()}-${item.date.getDate()}`}
-                                                            type="button"
-                                                            className={`
+                                                        return (
+                                                            <button
+                                                                key={`${item.date.getFullYear()}-${item.date.getMonth()}-${item.date.getDate()}`}
+                                                                type="button"
+                                                                className={`
                                                         ${styles.dayButton}
                                                         ${!item.currentMonth ? styles.otherMonthDay : ""}
                                                         ${isToday ? styles.todayDay : ""}
                                                         ${isSelected ? styles.selectedDay : ""
-                                                                }
+                                                                    }
                                                     `}
-                                                            onClick={() => handleSelectDate(item.date)}
-                                                        >
-                                                            {
-                                                                item.date.getDate()
-                                                            }
-                                                        </button>
-                                                    );
-                                                })
-                                            }
-                                        </div>
+                                                                onClick={() => handleSelectDate(item.date)}
+                                                            >
+                                                                {
+                                                                    item.date.getDate()
+                                                                }
+                                                            </button>
+                                                        );
+                                                    })
+                                                }
+                                            </div>
 
-                                        <div className={styles.calendarFooter}>
-                                            <button
-                                                type="button"
-                                                className={styles.todayButton}
-                                                onClick={handleToday}
-                                            >
-                                                Today
-                                            </button>
+                                            <div className={styles.calendarFooter}>
+                                                <button
+                                                    type="button"
+                                                    className={styles.todayButton}
+                                                    onClick={handleToday}
+                                                >
+                                                    Today
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </FluentProvider>,
+                                    document.body
                                 )}
                             </div>
 
@@ -570,14 +573,7 @@ const DateComponent = ({ setFieldValue, value, isDisable, isRequired, label, log
                                 !date &&
                                 isRequired &&
                                 !inputError && (
-                                    <span
-                                        style={{
-                                            color: "red",
-                                            fontSize: "12px",
-                                        }}
-                                    >
-                                        {label}: Required fields must be filled in.
-                                    </span>
+                                    UIRequireField(label)
                                 )}
                         </div>
                     ) : (

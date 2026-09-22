@@ -1,0 +1,2 @@
+C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\JsonToFormControlSolution.cdsproj.AssemblyReference.cache
+C:\Congtt\PCF_Control\JsonToFormControl\JsonToFormControl\obj\Release\JsonToFormControlSolution.cdsproj.CoreCompileInputs.cache

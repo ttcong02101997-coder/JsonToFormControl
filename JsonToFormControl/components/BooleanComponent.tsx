@@ -1,7 +1,7 @@
 import { makeStyles, Switch } from '@fluentui/react-components';
 import { FieldComponentProps } from '../ShareLibs/Models';
 import React, { useCallback, useEffect, useState } from 'react';
-import { IconLock } from '../ShareLibs/Icons';
+import { UILabelRequire, UIRequireField } from '../ShareLibs/Shared';
 
 const useStyles = makeStyles({
     styleInput: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     },
     styleField: {
         display: "flex",
-        gap: "2px",
+        gap: "4px",
         flexDirection: "row",
 
         "@media (max-width: 425px)": {
@@ -52,11 +52,9 @@ function BooleanComponent({ setFieldValue, value, isDisable, isRequired, label, 
         return (
             <div className={styles.styleOverField} key={logicalName}>
                 <div className={styles.styleField}>
-                    <div style={{ minWidth: 180, display: "flex", gap: "2px", flexDirection: "row" }}>
-                        <label style={{ paddingBlockStart: 2, marginInlineEnd: 4, width: "100%", marginBottom: 5 }}>{label}</label>
-                        {isRequired ? <span style={{ color: "red", paddingBlockStart: 2, marginInlineEnd: 2, textShadow: "0 0 black" }}>*</span> : <span style={{ color: "white", paddingBlockStart: 2, marginInlineEnd: 2 }}>*</span>}
-                        {isDisable ? <IconLock /> : null}
-                    </div>
+                    {
+                        UILabelRequire(isRequired, isDisable, label)
+                    }
                     {
                         !isDisable ?
                             <div style={{ width: "100%" }}>
@@ -65,7 +63,7 @@ function BooleanComponent({ setFieldValue, value, isDisable, isRequired, label, 
                                     onChange={_onChange}
                                 />
                                 {
-                                    isValid && value == undefined && isRequired ? <span style={{ color: "red", fontSize: "12px", textShadow: "0 0 black" }}>{label}: Required fields must be filled in.</span> : null
+                                    isValid && value == undefined && isRequired ? UIRequireField(label) : null
                                 }
                             </div>
                             :
