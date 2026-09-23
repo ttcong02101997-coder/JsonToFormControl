@@ -37,6 +37,8 @@ function BooleanComponent({ setFieldValue, value, isDisable, isRequired, label, 
     useEffect(() => {
         if (value != "" && value != undefined)
             setChecked(value as boolean);
+        else
+            setChecked(false);
     }, [value])
 
     useEffect(() => {
