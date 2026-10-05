@@ -1,6 +1,6 @@
 import { makeStyles, Switch } from '@fluentui/react-components';
 import { FieldComponentProps } from '../ShareLibs/Models';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { UILabelRequire, UIRequireField } from '../ShareLibs/Shared';
 
 const useStyles = makeStyles({
@@ -23,32 +23,34 @@ const useStyles = makeStyles({
     }
 })
 
-function BooleanComponent({ setFieldValue, value, isDisable, isRequired, label, fieldValue, logicalName, isValid, isVisible }: FieldComponentProps) {
+function BooleanComponent({ setFieldValue, value, isDisable, isRequired, label, logicalName, isValid, isVisible }: FieldComponentProps) {
     const styles = useStyles();
-    const [checked, setChecked] = useState(false);
-
-    const _onChange = useCallback(
-        (ev: React.ChangeEvent<HTMLInputElement>) => {
-            setChecked(ev.currentTarget.checked);
-        },
-        [setChecked]
-    );
 
     useEffect(() => {
-        if (value != "" && value != undefined)
-            setChecked(value as boolean);
-        else
-            setChecked(false);
-    }, [value])
-
-    useEffect(() => {
-        setFieldValue({
-            ...fieldValue,
-            [logicalName]: {
-                value: checked
+        setFieldValue((currentFieldValue) => {
+            if (typeof currentFieldValue[logicalName]?.value === "boolean") {
+                return currentFieldValue;
             }
+
+            return {
+                ...currentFieldValue,
+                [logicalName]: {
+                    ...currentFieldValue[logicalName],
+                    value: false
+                }
+            };
         });
-    }, [checked])
+    }, [logicalName, setFieldValue]);
+
+    const onChange = (_event: React.ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => {
+        setFieldValue((currentFieldValue) => ({
+            ...currentFieldValue,
+            [logicalName]: {
+                ...currentFieldValue[logicalName],
+                value: data.checked
+            }
+        }));
+    };
 
     if (isVisible)
         return (
@@ -57,25 +59,16 @@ function BooleanComponent({ setFieldValue, value, isDisable, isRequired, label, 
                     {
                         UILabelRequire(isRequired, isDisable, label)
                     }
-                    {
-                        !isDisable ?
-                            <div style={{ width: "100%" }}>
-                                <Switch
-                                    checked={checked}
-                                    onChange={_onChange}
-                                />
-                                {
-                                    isValid && value == undefined && isRequired ? UIRequireField(label) : null
-                                }
-                            </div>
-                            :
-                            <Switch
-                                checked={checked}
-                                onChange={(_event, data) => data.checked}
-                                onClick={(e) => e.preventDefault()}
-                                tabIndex={-1}
-                            />
-                    }
+                    <div style={{ width: "100%" }}>
+                        <Switch
+                            checked={value === true}
+                            disabled={isDisable}
+                            onChange={onChange}
+                        />
+                        {
+                            !isDisable && isValid && value == undefined && isRequired ? UIRequireField(label) : null
+                        }
+                    </div>
                 </div>
             </div>
         )

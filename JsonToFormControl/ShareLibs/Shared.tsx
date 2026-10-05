@@ -26,6 +26,15 @@ const normalizeGuid = (value: string): string => {
     return value.replace(/[{}]/g, "").trim();
 };
 
+const escapeFetchXmlAttribute = (value: string): string => {
+    return value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&apos;");
+};
+
 export const getLookupEntityDisplayName = async (
     context: ComponentFramework.Context<IInputs>,
     entityName: string
@@ -59,7 +68,7 @@ export const getLookupEntityDisplayName = async (
     return entityName;
 };
 
-export const getLookupRecords = async (context: ComponentFramework.Context<IInputs>, entityName: string, lookupRelated: jsonRelatedLookup[], lookupSubNameAttr: string, fieldValue: Record<string, fieldValueProps>, keyword?: string): Promise<jsonLookupControl[]> => {
+export const getLookupRecords = async (context: ComponentFramework.Context<IInputs>, entityName: string, lookupRelated: jsonRelatedLookup[], lookupSubNameAttr: string, fieldValue: Record<string, fieldValueProps>, keyword?: string, customFilter?: string): Promise<jsonLookupControl[]> => {
     const metadataResult: unknown = await context.utils.getEntityMetadata(entityName);
 
     if (typeof metadataResult !== "object" || metadataResult === null) {
@@ -83,7 +92,7 @@ export const getLookupRecords = async (context: ComponentFramework.Context<IInpu
         selectFields.add(lookupSubNameAttr);
     }
 
-    const filters: string[] = [];
+    const fetchXmlConditions: string[] = [];
 
     if (lookupRelated) {
         for (const related of lookupRelated) {
@@ -103,26 +112,31 @@ export const getLookupRecords = async (context: ComponentFramework.Context<IInpu
                 continue;
             }
 
-            filters.push(`_${related.targetAttribute}_value eq ${relatedId}`);
+            fetchXmlConditions.push(
+                `<condition attribute="${escapeFetchXmlAttribute(related.targetAttribute)}" operator="eq" value="${escapeFetchXmlAttribute(relatedId)}" />`
+            );
         }
 
     }
 
     if (keyword != "" && keyword?.trim()) {
-        const escapedKeyword = keyword.trim().replace(/'/g, "''");
-
-        const keywordFilters: string[] = [
-            `contains(${primaryName},'${escapedKeyword}')`,
-        ];
-
-        filters.push(`(${keywordFilters.join("")})`);
+        fetchXmlConditions.push(
+            `<condition attribute="${escapeFetchXmlAttribute(primaryName)}" operator="like" value="%${escapeFetchXmlAttribute(keyword.trim())}%" />`
+        );
     }
 
-    let query = `?$select=${Array.from(selectFields).join(",")}` + `&$top=50`;
-
-    if (filters.length > 0) {
-        query += `&$filter=${filters.join(" and ")}`;
+    if (customFilter?.trim()) {
+        fetchXmlConditions.push(customFilter.trim());
     }
+
+    const attributes = Array.from(selectFields)
+        .map((fieldName) => `<attribute name="${escapeFetchXmlAttribute(fieldName)}" />`)
+        .join("");
+    const filterXml = fetchXmlConditions.length > 0
+        ? `<filter type="and">${fetchXmlConditions.join("")}</filter>`
+        : "";
+    const fetchXml = `<fetch top="50"><entity name="${escapeFetchXmlAttribute(entityName)}">${attributes}${filterXml}</entity></fetch>`;
+    const query = `?fetchXml=${encodeURIComponent(fetchXml)}`;
 
     const result = await context.webAPI.retrieveMultipleRecords(entityName, query);
     const records = result.entities as unknown as DynamicRecord[];

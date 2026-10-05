@@ -131,7 +131,7 @@ const useStyles = makeStyles({
     }
 });
 
-function LookupComponent({ setFieldValue, value, entityName, context, isDisable, isRequired, label, fieldValue, logicalName, lookupRelated, lookupSubNameAttr, isValid, isVisible }: FieldComponentProps) {
+function LookupComponent({ setFieldValue, value, entityName, context, isDisable, isRequired, label, fieldValue, logicalName, lookupRelated, lookupSubNameAttr, customFilter, isValid, isVisible }: FieldComponentProps) {
     const styles = useStyles();
     const [_search, _setSearch] = React.useState<string>("");
     const [valueLookup, setValueLookup] = React.useState<jsonLookupControl | undefined>(undefined);
@@ -234,7 +234,7 @@ function LookupComponent({ setFieldValue, value, entityName, context, isDisable,
         setOpenCard(true);
 
         try {
-            const records = await getLookupRecords(context!, entityName!, lookupRelated!, lookupSubNameAttr!, fieldValue, keyword);
+            const records = await getLookupRecords(context!, entityName!, lookupRelated!, lookupSubNameAttr!, fieldValue, keyword, customFilter);
             setOptions(records);
         } finally {
             setLoading(false);
@@ -516,7 +516,11 @@ function LookupComponent({ setFieldValue, value, entityName, context, isDisable,
                                                 </div>
                                             </div>
                                             :
-                                            null
+                                            <div className={`${styles.styleInputReadonly}`}>
+                                                <div
+                                                    className={`${styles.readonlyField} ${styles.styleTextReadonly}`}
+                                                ></div>
+                                            </div>
                                     }
 
                                 </>

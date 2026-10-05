@@ -93,6 +93,7 @@ function MultipleLookupComponent({
     logicalName,
     lookupRelated,
     lookupSubNameAttr,
+    customFilter,
     isValid,
     isVisible,
 }: FieldComponentProps) {
@@ -154,7 +155,7 @@ function MultipleLookupComponent({
 
         setLoading(true);
         try {
-            const records = await getLookupRecords(context, entityName, lookupRelated ?? [], lookupSubNameAttr ?? "", fieldValue, searchKeyword);
+            const records = await getLookupRecords(context, entityName, lookupRelated ?? [], lookupSubNameAttr ?? "", fieldValue, searchKeyword, customFilter);
             setOptions(records.filter(item => !excludedLookups.some(selected => normalizeLookupId(selected.id) === normalizeLookupId(item.id))));
         } finally {
             setLoading(false);

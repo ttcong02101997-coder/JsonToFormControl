@@ -8,6 +8,7 @@ declare global {
         setVisibleField?: (logicalName: string, visible: boolean) => void;
         setRequiredField?: (logicalName: string, required: boolean) => void;
         setDisabledField?: (logicalName: string, disabled: boolean) => void;
+        setFieldValue?: (logicalName: string, value: fieldValueProps | string | number | boolean) => void;
     }
 }
 
@@ -31,6 +32,7 @@ export interface jsonControl {
     lookupEntity: string;
     lookupRelated: jsonRelatedLookup[];
     lookupSubNameAttr: string;
+    customFilter?: string;
     items: jsonOptionsetControl[];
     required: boolean;
     visible: boolean;
@@ -63,6 +65,7 @@ export interface FieldComponentProps {
     logicalName: string;
     lookupRelated?: jsonRelatedLookup[];
     lookupSubNameAttr?: string;
+    customFilter?: string;
     fieldValue: Record<string, fieldValueProps>;
     isValid: boolean;
     dateFormat?: string;

@@ -125,6 +125,7 @@ function RenderFieldComponent({ fieldValue, setFieldValue, context, isDisable, o
                 context={context}
                 lookupRelated={objControl.lookupRelated}
                 lookupSubNameAttr={objControl.lookupSubNameAttr}
+                customFilter={objControl.customFilter}
                 isValid={isValid}
                 isVisible={objControl.visible}
             />
@@ -145,6 +146,7 @@ function RenderFieldComponent({ fieldValue, setFieldValue, context, isDisable, o
                 context={context}
                 lookupRelated={objControl.lookupRelated}
                 lookupSubNameAttr={objControl.lookupSubNameAttr}
+                customFilter={objControl.customFilter}
                 isValid={isValid}
                 isVisible={objControl.visible}
             />

@@ -116,10 +116,21 @@ function FormComponent({ context, fieldProperty, jsonProperty, callback }: FormC
             const newJson: string = setFieldDisabled(dataJsonRef.current, logicalName, disabled);
             setDataJson(JSON.parse(newJson) as jsonFormControl);
         };
+        window.setFieldValue = (logicalName, value) => {
+            const fieldValue = typeof value === "object" && value !== null
+                ? value
+                : { value };
+
+            setFieldValue(current => ({
+                ...current,
+                [logicalName]: fieldValue
+            }));
+        };
         return () => {
             delete window.setVisibleField;
             delete window.setRequiredField;
             delete window.setDisabledField;
+            delete window.setFieldValue;
         };
     }, []);
 
