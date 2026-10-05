@@ -194,6 +194,7 @@
 setVisibleField(logicalName,bool);
 setRequiredField(logicalName,bool);
 setDisabledField(logicalName,bool);
+setFieldValue(logicalName,bool);
 ```
 
 
@@ -247,6 +248,7 @@ setDisabledField(logicalName,bool);
             "type": "lookup",
             "lookupEntity": "ctt_formtest",
             "lookupSubNameAttr": "createdon",
+            "customFilter": "<condition attribute='ctt_name' operator='eq' value='hello' />",
             "required": true,
             "visible": true,
             "disabled": false
