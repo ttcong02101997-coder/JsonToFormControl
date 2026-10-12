@@ -443,6 +443,9 @@ const DateComponent = ({ setFieldValue, value, isDisable, isRequired, label, log
                                     onChange={
                                         handleInputChange
                                     }
+                                    onClick={
+                                        openCalendar
+                                    }
                                     onBlur={
                                         handleInputBlur
                                     }
